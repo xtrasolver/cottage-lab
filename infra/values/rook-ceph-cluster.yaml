@@ -67,6 +67,10 @@ cephClusterSpec:
 ingress:
   dashboard:
     ingressClassName: nginx
+    annotations:
+      nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      nginx.ingress.kubernetes.io/server-snippet: |
+        proxy_ssl_verify off;    
     host: 
       name: rook.apps.k8s1.cottage.my-lab.cz.my-lab.cz
       path: /

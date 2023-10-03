@@ -50,8 +50,8 @@ cephClusterSpec:
         memory: "100Mi"
   crashCollector:
     disable: false
-  # dashboard:
-  #   enabled: true
+  dashboard:
+    enabled: true
   #   urlPrefix: /
 cephFileSystems:
   - name: ceph-filesystem

@@ -13,3 +13,6 @@ kubectl port-forward service/argocd-server -n argocd 8080:443
 
 kubectl apply -f .\infra\auth-acmedns.yaml
 kubectl apply -f .\infra\clusterissuer.yaml
+
+
+kubectl resource-capacity --sort cpu.limit --util --pods

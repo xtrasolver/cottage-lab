@@ -1,7 +1,22 @@
 resources:
-  requests:
-    cpu: 100m
-    memory: 128Mi
-  limits:
-    cpu: 1000m
-    memory: 256Mi
+  mgr:
+    limits:
+      cpu: "200m"
+      memory: "512mi"
+    requests:
+      cpu: "50m"
+      memory: "256Mi"
+  mon:
+    limits:
+      cpu: "200m"
+      memory: "1Gi"
+    requests:
+      cpu: "50m"
+      memory: "512mi"
+  osd:
+    limits:
+      cpu: "200m"
+      memory: "2Gi"
+    requests:
+      cpu: "50m"
+      memory: "2Gi"

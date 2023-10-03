@@ -57,6 +57,7 @@ ingress:
   dashboard:
     host: 
       name: rook.apps.k8s1.cottage.my-lab.cz.my-lab.cz
+    ingressClassName: nginx
   
   #   urlPrefix: /
 cephFileSystems:

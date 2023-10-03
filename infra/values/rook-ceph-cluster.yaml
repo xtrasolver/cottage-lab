@@ -52,6 +52,10 @@ cephClusterSpec:
     disable: false
   dashboard:
     enabled: true
+  ingress:
+    dashboard:
+      host: rook.apps.k8s1.cottage.my-lab.cz.my-lab.cz
+    
   #   urlPrefix: /
 cephFileSystems:
   - name: ceph-filesystem

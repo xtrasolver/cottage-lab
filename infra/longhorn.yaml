@@ -1,32 +1,32 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: infra-longhorn
-  namespace: argocd
-spec:
-  project: default
-  sources:
-    - repoURL: https://github.com/xtrasolver/cottage-lab.git
-      targetRevision: HEAD
-      ref: repo
-    - repoURL: "https://charts.longhorn.io"
-      chart: longhorn
-      targetRevision: 1.5.1
-      helm:
-        releaseName: longhorn
-        valueFiles:
-          - $repo/infra/values/longhorn.yaml
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: longhorn
-  syncPolicy:
-    automated: {}
-    syncOptions:
-      - CreateNamespace=true
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: longhorn
-  labels:
-    pod-security.kubernetes.io/enforce: privileged
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: infra-longhorn
+#   namespace: argocd
+# spec:
+#   project: default
+#   sources:
+#     - repoURL: https://github.com/xtrasolver/cottage-lab.git
+#       targetRevision: HEAD
+#       ref: repo
+#     - repoURL: "https://charts.longhorn.io"
+#       chart: longhorn
+#       targetRevision: 1.5.1
+#       helm:
+#         releaseName: longhorn
+#         valueFiles:
+#           - $repo/infra/values/longhorn.yaml
+#   destination:
+#     server: "https://kubernetes.default.svc"
+#     namespace: longhorn
+#   syncPolicy:
+#     automated: {}
+#     syncOptions:
+#       - CreateNamespace=true
+# ---
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: longhorn
+#   labels:
+#     pod-security.kubernetes.io/enforce: privileged

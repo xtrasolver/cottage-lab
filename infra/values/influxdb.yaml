@@ -1,0 +1,17 @@
+adminUser:
+  organization: stitnelab
+  bucket: default
+  user: mole-admin
+  # existingSecret: influxdb-admin-creds
+ingress:
+  enabled: true
+  tls: true
+  seceretName: null
+  hostname: influxdb.k8s1.cottage.my-lab.cz.my-lab.cz
+  className: nginx
+persistence:
+  enabled: true
+  size: 10Gi
+env:
+  - name: INFLUXDB_DB
+    value: main

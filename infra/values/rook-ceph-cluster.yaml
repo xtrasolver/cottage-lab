@@ -14,46 +14,53 @@ cephClusterSpec:
         memory: "512Mi"
     mon:
       limits:
-        memory: "1Gi"
+        cpu: "100m"
+        memory: "512Mi"
       requests:
-        cpu: "50m"
-        memory: "1Gi"
+        cpu: "10m"
+        memory: "512Mi"
     osd:
       limits:
-        memory: "1Gi"
+        cpu: "100m"
+        memory: "512Mi"
       requests:
-        cpu: "50m"
-        memory: "1Gi"
+        cpu: "10m"
+        memory: "512Mi"
     prepareosd:
       limits:
-        memory: "900Mi"
+        cpu: "100m"
+        memory: "512Mi"
       requests:
-        cpu: "50m"
-        memory: "50Mi"
+        cpu: "10m"
+        memory: "512Mi"
     mgr-sidecar:
       limits:
-        memory: "100Mi"
+        cpu: "100m"
+        memory: "128Mi"
       requests:
         cpu: "10m"
-        memory: "40Mi"
+        memory: "128Mi"
     crashcollector:
       limits:
-        memory: "60Mi"
+        cpu: "100m"
+        memory: "128Mi"
       requests:
-        cpu: "3m"
-        memory: "60Mi"
+        cpu: "10m"
+        memory: "128Mi"
     logcollector:
       limits:
-        memory: "1Gi"
+        cpu: "100m"
+        memory: "256Gi"
       requests:
         cpu: "10m"
-        memory: "100Mi"
+        memory: "256Mi"
     cleanup:
       limits:
-        memory: "1Gi"
+        cpu: "100m"
+        memory: "256Gi"
       requests:
         cpu: "10m"
-        memory: "100Mi"
+        memory: "256Mi"
   crashCollector:
     disable: false
   dashboard:

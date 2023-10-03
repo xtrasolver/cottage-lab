@@ -1,3 +1,9 @@
+toolbox:
+  enabled: true
+# monitoring:
+#   enabled: true
+#   createPrometheusRules: false
+
 cephClusterSpec:
   resources:
     mgr:

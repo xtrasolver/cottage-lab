@@ -34,6 +34,6 @@ spec:
   dnsNames:
   - '*.apps.k8s1.cottage.my-lab.cz.my-lab.cz'
   issuerRef:
-    kind: Issuer
+    kind: ClusterIssuer
     name: letsencrypt-cert-issuer
   secretName: tls-wildcard

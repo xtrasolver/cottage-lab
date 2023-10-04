@@ -12,6 +12,10 @@ mongodb:
   persistence:
     enabled: true
     size: 8Gi
+  image:
+    registry: docker.io
+    repository: zcube/bitnami-compat-mongodb
+    tag: 5.0.17-debian-11
 ingress:
   main:
     enabled: true

@@ -9,6 +9,9 @@ ingress:
   seceretName: null
   hostname: influxdb.apps.k8s1.cottage.my-lab.cz.my-lab.cz
   className: nginx
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: "letsencrypt-cert-issuer"   
 persistence:
   enabled: true
   size: 10Gi

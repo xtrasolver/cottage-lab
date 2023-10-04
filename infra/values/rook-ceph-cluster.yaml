@@ -79,11 +79,11 @@ ingress:
       nginx.ingress.kubernetes.io/server-snippet: |
         proxy_ssl_verify off;    
     host: 
-      name: rook.apps.k8s1.cottage.my-lab.cz.my-lab.cz
+      name: rook.apps.k8s1.cottage.my-lab.cz
       path: /
     tls:
       - hosts:
-          - rook.apps.k8s1.cottage.my-lab.cz.my-lab.cz
+          - rook.apps.k8s1.cottage.my-lab.cz
   #   urlPrefix: /
 cephFileSystems:
   - name: ceph-filesystem

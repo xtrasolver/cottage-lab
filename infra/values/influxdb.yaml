@@ -6,7 +6,7 @@ adminUser:
 ingress:
   enabled: true
   tls: true
-  seceretName: influxdb
+  secretName: influxdb
   hostname: influxdb.apps.k8s1.cottage.my-lab.cz.my-lab.cz
   className: nginx
   annotations:

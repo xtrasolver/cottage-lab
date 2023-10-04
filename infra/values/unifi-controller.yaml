@@ -4,7 +4,8 @@ image:
   tag: v7.5.174
 persistence:
   data:
-    enabled: true    
+    enabled: true
+    accessMode: ReadWriteOnce
     size: 8Gi    
 mongodb:
   enabled: true

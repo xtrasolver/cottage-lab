@@ -22,4 +22,18 @@ spec:
   syncPolicy:
     automated: {}
     syncOptions:
-      - CreateNamespace=true    
+      - CreateNamespace=true
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: tls-wildcard-certificate
+  namespace: certmanager
+spec:
+  commonName: '*.apps.k8s1.cottage.my-lab.cz.my-lab.cz'
+  dnsNames:
+  - '*.apps.k8s1.cottage.my-lab.cz.my-lab.cz'
+  issuerRef:
+    kind: Issuer
+    name: letsencrypt-cert-issuer
+  secretName: tls-wildcard

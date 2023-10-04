@@ -23,3 +23,13 @@ spec:
     automated: {}
     syncOptions:
       - CreateNamespace=true
+---
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: main
+spec:
+  service:
+    type: LoadBalancer
+  persistence:
+    storage: 10Gi    

@@ -12,6 +12,7 @@ mongodb:
   persistence:
     enabled: true
     size: 8Gi
+    mountpath: /data/db
   image:
     registry: docker.io
     repository: arm64v8/mongo

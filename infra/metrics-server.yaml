@@ -6,16 +6,12 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: https://github.com/xtrasolver/cottage-lab.git
-      targetRevision: HEAD
-      ref: repo
     - repoURL: https://kubernetes-sigs.github.io/metrics-server
       chart: metrics-server
       targetRevision: 3.11.0
       helm:
         releaseName: metrics-server
-        valueFiles:
-          - $repo/infra/values/metrics-server.yaml
+        valuesObject:
   destination:
     server: "https://kubernetes.default.svc"
     namespace: metrics-server

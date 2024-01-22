@@ -6,16 +6,17 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: https://github.com/xtrasolver/cottage-lab.git
-      targetRevision: HEAD
-      ref: repo
     - repoURL: "https://charts.jetstack.io"
       chart: cert-manager
       targetRevision: 1.12.3
       helm:
         releaseName: certmanager
-        valueFiles:
-          - $repo/infra/values/certmanager.yaml
+        valuesObject:
+          installCRDs: true
+          clusterResourceNamespace: certmanager
+          extraArgs: 
+            - '--dns01-recursive-nameservers-only'
+            - '--dns01-recursive-nameservers=8.8.8.8:53,1.1.1.1:53'
   destination:
     server: "https://kubernetes.default.svc"
     namespace: certmanager

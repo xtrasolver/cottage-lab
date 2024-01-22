@@ -6,16 +6,30 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: https://github.com/xtrasolver/cottage-lab.git
-      targetRevision: HEAD
-      ref: repo
     - repoURL: https://prometheus-community.github.io/helm-charts
       chart: kube-prometheus-stack
       targetRevision: 55.8.3
       helm:
         releaseName: prometheus-stack
-        valueFiles:
-          - $repo/infra/values/prometheus-stack.yaml
+        valuesObject:
+          grafana:
+            # persistence:
+            #   type: pvc
+            #   enabled: true
+            #   storageClassName: openebs-jiva-csi-default
+            #   accessModes:
+            #     - ReadWriteOnce
+            #   size: 1Gi
+            ingress:
+              enabled: true
+              hosts:
+                - grafana.apps.k8s1.cottage.my-lab.cz
+              tls:
+                - hosts:
+                    - grafana.apps.k8s1.cottage.my-lab.cz
+              ingressClassName: "nginx"
+          nodeExporter:
+            enabled: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: prometheus-stack

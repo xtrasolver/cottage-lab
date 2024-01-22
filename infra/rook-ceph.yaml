@@ -1,32 +1,239 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: infra-rook-ceph
-#   namespace: argocd
-# spec:
-#   project: default
-#   sources:
-#     - repoURL: https://github.com/xtrasolver/cottage-lab.git
-#       targetRevision: HEAD
-#       ref: repo
-#     - repoURL: "https://charts.rook.io/release"
-#       chart: rook-ceph
-#       targetRevision: 1.12.3
-#       helm:
-#         releaseName: rook-ceph
-#         valueFiles:
-#           - $repo/infra/values/rook-ceph.yaml
-#   destination:
-#     server: "https://kubernetes.default.svc"
-#     namespace: rook-ceph
-#   syncPolicy:
-#     automated: {}
-#     syncOptions:
-#       - CreateNamespace=true
-# ---
-# apiVersion: v1
-# kind: Namespace
-# metadata:
-#   name: rook-ceph
-#   labels:
-#     pod-security.kubernetes.io/enforce: privileged
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra-rook-ceph
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: "https://charts.rook.io/release"
+      chart: rook-ceph
+      targetRevision: 1.12.3
+      helm:
+        releaseName: rook-ceph
+        valuesObject:
+          csi:
+            csiRBDProvisionerResource: |
+              - name : csi-provisioner
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+              - name : csi-resizer
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+              - name : csi-attacher
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+              - name : csi-snapshotter
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+              - name : csi-rbdplugin
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+              - name : csi-omap-generator
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+              - name : liveness-prometheus
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+
+            # -- CEPH CSI RBD plugin resource requirement list
+            # @default -- see values.yaml
+            csiRBDPluginResource: |
+              - name : driver-registrar
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+              - name : csi-rbdplugin
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+              - name : liveness-prometheus
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+
+            # -- CEPH CSI CephFS provisioner resource requirement list
+            # @default -- see values.yaml
+            csiCephFSProvisionerResource: |
+              - name : csi-provisioner
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+              - name : csi-resizer
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+              - name : csi-attacher
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+              - name : csi-snapshotter
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+              - name : csi-cephfsplugin
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+              - name : liveness-prometheus
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+
+            # -- CEPH CSI CephFS plugin resource requirement list
+            # @default -- see values.yaml
+            csiCephFSPluginResource: |
+              - name : driver-registrar
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+              - name : csi-cephfsplugin
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+              - name : liveness-prometheus
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+
+            # -- CEPH CSI NFS provisioner resource requirement list
+            # @default -- see values.yaml
+            csiNFSProvisionerResource: |
+              - name : csi-provisioner
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+              - name : csi-nfsplugin
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+              - name : csi-attacher
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+
+            # -- CEPH CSI NFS plugin resource requirement list
+            # @default -- see values.yaml
+            csiNFSPluginResource: |
+              - name : driver-registrar
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+              - name : csi-nfsplugin
+                resource:
+                  requests:
+                    memory: 32Mi
+                    cpu: 100m
+                  limits:
+                    memory: 64Mi
+                    cpu: 200m
+
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: rook-ceph
+  syncPolicy:
+    automated: {}
+    managedNamespaceMetadata:
+      labels:
+         pod-security.kubernetes.io/enforce: privileged
+    syncOptions:
+      - CreateNamespace=true

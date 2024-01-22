@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: disk-wipe
+  name: disk-wipe-node-3
   namespace: wipe
 spec:
   restartPolicy: Never

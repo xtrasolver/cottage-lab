@@ -1,50 +1,50 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: infra-openebs
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  project: default
-  sources:
-    - repoURL: https://github.com/xtrasolver/cottage-lab.git
-      targetRevision: HEAD
-      ref: repo
-    - repoURL: "https://openebs.github.io/jiva-operator"
-      chart: jiva
-      targetRevision: 3.2.0
-      helm:
-        releaseName: openebs
-        valueFiles:
-          - $repo/infra/values/openebs.yaml
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: openebs
-  syncPolicy:
-    automated: {}
-    syncOptions:
-      - CreateNamespace=true
----
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: openebs
-  labels:
-    pod-security.kubernetes.io/audit: privileged
-    pod-security.kubernetes.io/enforce: privileged
-    pod-security.kubernetes.io/warn: privileged
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  labels:
-    app.kubernetes.io/managed-by: pulumi
-  name: openebs-jiva-csi-iscsiadm
-  namespace: openebs
-data:
-  iscsiadm: |
-    #!/bin/sh
-    iscsid_pid=$(pgrep iscsid)
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: infra-openebs
+#   namespace: argocd
+#   finalizers:
+#     - resources-finalizer.argocd.argoproj.io
+# spec:
+#   project: default
+#   sources:
+#     - repoURL: https://github.com/xtrasolver/cottage-lab.git
+#       targetRevision: HEAD
+#       ref: repo
+#     - repoURL: "https://openebs.github.io/jiva-operator"
+#       chart: jiva
+#       targetRevision: 3.2.0
+#       helm:
+#         releaseName: openebs
+#         valueFiles:
+#           - $repo/infra/values/openebs.yaml
+#   destination:
+#     server: "https://kubernetes.default.svc"
+#     namespace: openebs
+#   syncPolicy:
+#     automated: {}
+#     syncOptions:
+#       - CreateNamespace=true
+# ---
+# apiVersion: v1
+# kind: Namespace
+# metadata:
+#   name: openebs
+#   labels:
+#     pod-security.kubernetes.io/audit: privileged
+#     pod-security.kubernetes.io/enforce: privileged
+#     pod-security.kubernetes.io/warn: privileged
+# ---
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   labels:
+#     app.kubernetes.io/managed-by: pulumi
+#   name: openebs-jiva-csi-iscsiadm
+#   namespace: openebs
+# data:
+#   iscsiadm: |
+#     #!/bin/sh
+#     iscsid_pid=$(pgrep iscsid)
 
-    nsenter --mount="/proc/${iscsid_pid}/ns/mnt" --net="/proc/${iscsid_pid}/ns/net" -- /usr/local/sbin/iscsiadm "$@" 
+#     nsenter --mount="/proc/${iscsid_pid}/ns/mnt" --net="/proc/${iscsid_pid}/ns/net" -- /usr/local/sbin/iscsiadm "$@" 

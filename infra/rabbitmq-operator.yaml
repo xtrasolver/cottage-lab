@@ -1,37 +1,37 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: infra-rabbitmq-operator
-  namespace: argocd
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
-spec:
-  project: default
-  sources:
-    - repoURL: https://github.com/xtrasolver/cottage-lab.git
-      targetRevision: HEAD
-      ref: repo
-    - repoURL: "https://charts.bitnami.com/bitnami"
-      chart: rabbitmq-cluster-operator
-      targetRevision: 3.8.3
-      helm:
-        releaseName: rabbitmq-operator
-        valueFiles:
-          - $repo/infra/values/rabbitmq-operator.yaml
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: rabbitmq-operator
-  syncPolicy:
-    automated: {}
-    syncOptions:
-      - CreateNamespace=true
----
-apiVersion: rabbitmq.com/v1beta1
-kind: RabbitmqCluster
-metadata:
-  name: main
-spec:
-  service:
-    type: LoadBalancer
-  persistence:
-    storage: 10Gi    
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: infra-rabbitmq-operator
+#   namespace: argocd
+#   finalizers:
+#     - resources-finalizer.argocd.argoproj.io
+# spec:
+#   project: default
+#   sources:
+#     - repoURL: https://github.com/xtrasolver/cottage-lab.git
+#       targetRevision: HEAD
+#       ref: repo
+#     - repoURL: "https://charts.bitnami.com/bitnami"
+#       chart: rabbitmq-cluster-operator
+#       targetRevision: 3.8.3
+#       helm:
+#         releaseName: rabbitmq-operator
+#         valueFiles:
+#           - $repo/infra/values/rabbitmq-operator.yaml
+#   destination:
+#     server: "https://kubernetes.default.svc"
+#     namespace: rabbitmq-operator
+#   syncPolicy:
+#     automated: {}
+#     syncOptions:
+#       - CreateNamespace=true
+# ---
+# apiVersion: rabbitmq.com/v1beta1
+# kind: RabbitmqCluster
+# metadata:
+#   name: main
+# spec:
+#   service:
+#     type: LoadBalancer
+#   persistence:
+#     storage: 10Gi    

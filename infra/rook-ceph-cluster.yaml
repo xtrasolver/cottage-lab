@@ -24,6 +24,8 @@ spec:
           cephClusterSpec:
             dashboard:
               enabled: true
+              port: 8443
+              ssl: true
             mon:
               count: 3
               allowMultiplePerNode: true

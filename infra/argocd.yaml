@@ -6,16 +6,37 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: https://github.com/xtrasolver/cottage-lab.git
-      targetRevision: HEAD
-      ref: repo
     - repoURL: https://argoproj.github.io/argo-helm
       chart: argo-cd
       targetRevision: 5.45.0
       helm:
         releaseName: argocd
-        valueFiles:
-        - $repo/infra/values/argocd.yaml   
+        valuesObject:
+          server:
+            ingress:
+              enabled: true
+              hosts: 
+                - argocd.apps.k8s1.cottage.my-lab.cz
+              tls:
+              - hosts:
+                  - argocd.apps.k8s1.cottage.my-lab.cz
+                secretName: tls-argocd.my-lab.cz
+              https: true
+              ingressClassName: "nginx"
+              annotations:
+                kubernetes.io/ingress.class: nginx
+                nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+                nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+                nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+            config:
+              server.rbac.log.enforce.enable: "true"
+              exec.enabled: "true" 
+          applicationSet:
+            enabled: false
+          dex:
+            enabled: false
+          notifications:
+            enabled: false 
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd

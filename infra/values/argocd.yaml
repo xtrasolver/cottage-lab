@@ -17,3 +17,9 @@ server:
   config:
     server.rbac.log.enforce.enable: "true"
     exec.enabled: "true" 
+applicationSet:
+  enabled: false
+dex:
+  enabled: false
+notifications:
+  enabled: false

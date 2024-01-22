@@ -14,6 +14,9 @@ spec:
         valuesObject:
           operatorNamespace: rook-ceph
 
+          monitoring:
+            enabled: false
+
           toolbox:
             # -- Enable Ceph debugging pod deployment. See [toolbox](../Troubleshooting/ceph-toolbox.md)
             enabled: true

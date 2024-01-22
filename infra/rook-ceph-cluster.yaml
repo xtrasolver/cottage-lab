@@ -21,21 +21,20 @@ spec:
             # -- Enable Ceph debugging pod deployment. See [toolbox](../Troubleshooting/ceph-toolbox.md)
             enabled: true
 
-          storage: # cluster level storage configuration and selection
-            useAllNodes: false
-            useAllDevices: false
-            nodes:
-              - name: "talos-7k7-a89"
-                devices:
-                  - name: "sda"
-              - name: "talos-efz-8xy"
-                devices:
-                  - name: "sda"
-              - name: "talos-yva-ttr"
-                devices:
-                  - name: "sda"
-
           cephClusterSpec:
+            storage: # cluster level storage configuration and selection
+              useAllNodes: false
+              useAllDevices: false
+              nodes:
+                - name: "talos-7k7-a89"
+                  devices:
+                    - name: "sda"
+                - name: "talos-efz-8xy"
+                  devices:
+                    - name: "sda"
+                - name: "talos-yva-ttr"
+                  devices:
+                    - name: "sda"
             dashboard:
               enabled: true
               ssl: true

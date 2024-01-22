@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: hhttps://github.com/xtrasolver/cottage-lab.git
+    - repoURL: https://github.com/xtrasolver/cottage-lab.git
       targetRevision: HEAD
       path: infra/resources/emqx-tenant
   destination:

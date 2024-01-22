@@ -12,6 +12,12 @@ spec:
       helm:
         releaseName: rook-ceph
         valuesObject:
+
+          # -- Enable discovery daemon
+          enableDiscoveryDaemon: false
+          # -- Set the discovery daemon device discovery interval (default to 60m)
+          discoveryDaemonInterval: 60m 
+                 
           csi:
             csiRBDProvisionerResource: |
               - name : csi-provisioner

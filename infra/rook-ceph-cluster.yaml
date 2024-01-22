@@ -15,7 +15,7 @@ spec:
           operatorNamespace: rook-ceph
 
           monitoring:
-            enabled: false
+            enabled: true
 
           toolbox:
             # -- Enable Ceph debugging pod deployment. See [toolbox](../Troubleshooting/ceph-toolbox.md)
@@ -24,8 +24,7 @@ spec:
           cephClusterSpec:
             dashboard:
               enabled: true
-              port: 8443
-              ssl: true
+              ssl: false
             mon:
               count: 3
               allowMultiplePerNode: true

@@ -12,6 +12,8 @@ spec:
       helm:
         releaseName: longhorn
         valuesObject:
+          persistence:
+            defaultClassReplicaCount: 2
           ingress:
             enabled: true
             ingressClassName: "nginx"

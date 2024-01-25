@@ -30,7 +30,7 @@ spec:
             backupStorageLocation:
               - name: minio
                 provider: aws
-                bucket: backup
+                bucket: velero-backup
                 default: true
                 accessMode: ReadWrite
                 config:
@@ -42,7 +42,7 @@ spec:
               - name: ebs
                 provider: openebs.io/cstor-blockstore
                 config:
-                  bucket: backup
+                  bucket: velero-backup
                   prefix: cstor
                   provider: aws
                   region: minio

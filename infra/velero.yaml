@@ -56,6 +56,13 @@ spec:
             existingSecret: "velero-s3-credentials"
           snapshotsEnabled: true
 
+          metrics:
+            enabled: true
+
+            serviceMonitor:
+              autodetect: true
+              enabled: true
+
     - repoURL: https://github.com/xtrasolver/cottage-lab.git
       targetRevision: HEAD
       path: infra/resources/velero

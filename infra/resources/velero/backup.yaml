@@ -13,6 +13,6 @@ spec:
   itemOperationTimeout: 4h0m0s
   metadata: {}
   snapshotMoveData: false
-  storageLocation: minio
+  storageLocation: default
   ttl: 720h0m0s
 

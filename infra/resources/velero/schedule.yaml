@@ -13,4 +13,4 @@ spec:
     excludedNamespaces: []
     includedResources:
     - '*'
-    storageLocation: minio
+    storageLocation: default

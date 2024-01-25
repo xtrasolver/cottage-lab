@@ -17,10 +17,10 @@ spec:
           extraArgs: 
             - '--dns01-recursive-nameservers-only'
             - '--dns01-recursive-nameservers=8.8.8.8:53,1.1.1.1:53'
-        prometheus:
-          enabled: true
-          servicemonitor:
+          prometheus:
             enabled: true
+            servicemonitor:
+              enabled: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: certmanager

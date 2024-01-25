@@ -10,7 +10,8 @@ spec:
   project: default
   sources:
     - repoURL: "https://piraeus.io/helm-charts"
-      targetRevision: snapshot-controller
+      chart: snapshot-controller
+      targetRevision: 2.0.4
       helm:
         releaseName: snapshot-controller
         valuesObject:

@@ -12,6 +12,7 @@ spec:
       helm:
         releaseName: velero
         valuesObject:
+          features: EnableCSI
           initContainers:
             - name: velero-plugin-for-aws
               image: velero/velero-plugin-for-aws:v1.8.2
@@ -27,29 +28,18 @@ spec:
                   name: plugins
 
           configuration:
-            features: EnableCSI
             backupStorageLocation:
-              - name: minio
-                provider: aws
+              - provider: aws
                 bucket: velero-backup
-                default: true
-                accessMode: ReadWrite
                 config:
                   region: minio
                   s3Url: http://192.168.11.11:9001
                   s3ForcePathStyle: true
-                defaultVolumesToRestic: true
             volumeSnapshotLocation:
-              - name: ebs
-                provider: openebs.io/cstor-blockstore
+              - provider: aws
                 config:
-                  bucket: velero-backup
-                  prefix: cstor
-                  provider: aws
                   region: minio
-                  s3Url: http://192.168.11.11:9001
-                  s3ForcePathStyle: true
-                  multiPartChunkSize: 64Mi
+                
 
           credentials:
             useSecret: true

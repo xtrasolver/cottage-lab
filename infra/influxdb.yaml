@@ -22,7 +22,6 @@ spec:
           ingress:
             enabled: true
             tls: true
-            secretName: influxdb
             hostname: influxdb.apps.k8s1.cottage.my-lab.cz
             className: nginx
             annotations:

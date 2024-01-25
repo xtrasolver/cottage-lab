@@ -28,8 +28,8 @@ spec:
                   name: plugins
 
           configuration:
-            defaultVolumesToFsBackup: true
-            defaultBackupTTL: 720h
+            # defaultVolumesToFsBackup: true
+            # defaultBackupTTL: 720h
 
             backupStorageLocation:
               - provider: aws

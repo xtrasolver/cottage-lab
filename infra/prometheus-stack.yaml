@@ -13,13 +13,13 @@ spec:
         releaseName: prometheus-stack
         valuesObject:
           grafana:
-            # persistence:
-            #   type: pvc
-            #   enabled: true
-            #   storageClassName: openebs-jiva-csi-default
-            #   accessModes:
-            #     - ReadWriteOnce
-            #   size: 1Gi
+            persistence:
+              type: pvc
+              enabled: true
+              storageClassName: longhorn
+              accessModes:
+                - ReadWriteOnce
+              size: 1Gi
             ingress:
               enabled: true
               hosts:

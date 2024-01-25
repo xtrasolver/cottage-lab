@@ -17,7 +17,7 @@ spec:
           adminUser:
             organization: stitnelab
             bucket: default
-            user: mole-admin
+            user: admin
             existingSecret: influxdb-admin-creds
           ingress:
             enabled: true

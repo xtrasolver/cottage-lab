@@ -12,7 +12,6 @@ spec:
       helm:
         releaseName: velero
         valuesObject:
-          features: EnableCSI
           initContainers:
             - name: velero-plugin-for-aws
               image: velero/velero-plugin-for-aws:v1.8.2
@@ -28,6 +27,7 @@ spec:
                   name: plugins
 
           configuration:
+            features: EnableCSI
             # defaultVolumesToFsBackup: true
             # defaultBackupTTL: 720h
 

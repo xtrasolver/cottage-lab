@@ -1,0 +1,16 @@
+apiVersion: velero.io/v1
+kind: Schedule
+metadata:
+  name: secrets-backup
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"    
+spec:
+  schedule: "57 11 * * *"
+  template:
+    # labelSelector:
+    #   matchExpressions:
+    #   - {key: velero-backup, operator: In, values: ['true']}
+    excludedNamespaces: []
+    includedResources:
+    - '*'
+    storageLocation: minio

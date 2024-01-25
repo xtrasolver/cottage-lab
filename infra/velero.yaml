@@ -1,0 +1,67 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra-velero
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: "https://vmware-tanzu.github.io/helm-charts/"
+      chart: velero
+      targetRevision: 5.2.2
+      helm:
+        releaseName: velero
+        valuesObject:
+          initContainers:
+            - name: velero-plugin-for-aws
+              image: velero/velero-plugin-for-aws:v1.8.2
+              imagePullPolicy: IfNotPresent
+              volumeMounts:
+                - mountPath: /target
+                  name: plugins
+            - name: velero-plugin-for-csi
+              image: velero/velero-plugin-for-csi:v0.6.2
+              imagePullPolicy: IfNotPresent
+              volumeMounts:
+                - mountPath: /target
+                  name: plugins
+
+          configuration:
+            backupStorageLocation:
+              - name: minio
+                provider: aws
+                bucket: backup
+                default: true
+                accessMode: ReadWrite
+                config:
+                  region: de
+                  s3Url: http://192.168.11.11:9001
+                  s3ForcePathStyle: true
+                defaultVolumesToRestic: true
+            volumeSnapshotLocation:
+              - name: ebs
+                provider: openebs.io/cstor-blockstore
+                config:
+                  bucket: backup
+                  prefix: cstor
+                  provider: aws
+                  region: minio
+                  s3Url: http://192.168.11.11:9001
+                  s3ForcePathStyle: true
+                  multiPartChunkSize: 64Mi
+
+          credentials:
+            useSecret: true
+            existingSecret: "velero-s3-credentials"
+          snapshotsEnabled: true
+
+    - repoURL: https://github.com/xtrasolver/cottage-lab.git
+      targetRevision: HEAD
+      path: infra/resources/velero
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: velero
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true

@@ -3,7 +3,7 @@ kind: Backup
 metadata:
   annotations:
     argocd.argoproj.io/sync-wave: '5'
-  name: backup
+  name: backup-01
 spec:
   csiSnapshotTimeout: 10m0s
   defaultVolumesToFsBackup: true

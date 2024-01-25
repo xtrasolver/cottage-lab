@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra-snapshot-controller
+  namespace: argocd
+  finalizers:
+    # The default behaviour is foreground cascading deletion
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: "https://piraeus.io/helm-charts"
+      targetRevision: snapshot-controller
+      helm:
+        releaseName: snapshot-controller
+        valuesObject:
+
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: snapshot-controller-system
+  syncPolicy:
+    automated: {}
+    # managedNamespaceMetadata:
+    #   labels:
+    #      pod-security.kubernetes.io/enforce: privileged    
+    syncOptions:
+      - CreateNamespace=true

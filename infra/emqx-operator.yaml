@@ -12,6 +12,8 @@ spec:
       helm:
         releaseName: emqx-operator
         valuesObject:
+         metrics:
+           enable: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: emqx-operator

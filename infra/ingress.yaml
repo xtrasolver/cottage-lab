@@ -6,16 +6,19 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: https://github.com/xtrasolver/cottage-lab.git
-      targetRevision: HEAD
-      ref: repo
     - repoURL: https://kubernetes.github.io/ingress-nginx
       chart: ingress-nginx
       targetRevision: 4.7.1
       helm:
         releaseName: ingress
-        valueFiles:
-          - $repo/infra/values/ingress.yaml
+        valuesObject:
+          controller:
+            extraArgs:
+              default-ssl-certificate: certmanager/tls-wildcard
+            metrics:
+              enabled: true
+              serviceMonitor:
+                enabled: true 
   destination:
     server: "https://kubernetes.default.svc"
     namespace: ingress

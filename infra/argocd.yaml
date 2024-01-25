@@ -13,6 +13,8 @@ spec:
         releaseName: argocd
         valuesObject:
           server:
+            metrics:
+              enabled: true
             ingress:
               enabled: true
               hosts: 
@@ -37,6 +39,15 @@ spec:
             enabled: false
           notifications:
             enabled: false 
+          repoServer:
+            metrics:
+              enabled: true
+          redis:
+            metrics:
+              enabled: true
+          controller:
+            metrics:
+              enabled: true
   destination:
     server: "https://kubernetes.default.svc"
     namespace: argocd

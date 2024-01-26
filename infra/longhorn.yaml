@@ -19,7 +19,7 @@ spec:
             backupTarget: "s3://longhorn-backup@minio/cottage"
             backupTargetCredentialSecret: "minio-secret"        
           persistence:
-            defaultClassReplicaCount: 2
+            defaultClassReplicaCount: 3
           ingress:
             enabled: true
             ingressClassName: "nginx"

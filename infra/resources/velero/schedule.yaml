@@ -1,7 +1,7 @@
 apiVersion: velero.io/v1
 kind: Schedule
 metadata:
-  name: secrets-backup
+  name: regular-backup
   annotations:
     argocd.argoproj.io/sync-wave: "5"    
 spec:

@@ -5,7 +5,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "5"    
 spec:
-  schedule: "57 11 * * *"
+  schedule: "30 0 * * *"
   template:
     # labelSelector:
     #   matchExpressions:

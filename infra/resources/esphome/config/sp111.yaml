@@ -1,0 +1,191 @@
+# Just change name here
+substitutions:
+  device_name: device_name_01
+  voltage_divider: "771"
+  current_resistor: "0.0012"
+  static_ip: 192.168.13.140
+  friendly_name: todo
+  
+esphome:
+  name: ${device_name}
+  friendly_name: ${friendly_name}
+  platform: ESP8266
+  board: esp8285
+  esp8266_restore_from_flash: true
+  name_add_mac_suffix: true
+  project:
+    name: esphome.mole-automation
+    version: "1.0"
+
+wifi:
+  ssid: !secret wifi_name
+  password: !secret wifi_password
+  fast_connect: on
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "${device_name} Fallback Hotspot"
+    password: !secret wifi_hotspot_password
+
+  manual_ip:
+    static_ip: ${static_ip}
+    gateway: 192.168.13.1
+    subnet: 255.255.255.0
+    dns1: 192.168.13.1
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+# api:
+#   encryption:
+#     key:  !secret api_token
+
+mqtt:
+  broker: 192.168.27.154
+  port: 1883
+  username: !secret mqtt_username
+  password: !secret mqtt_password
+
+ota:
+
+web_server:
+  port: 80
+  auth:
+    username: admin
+    password: !secret web_server_password
+
+text_sensor:
+  - platform: version
+    id: ${device_name}_esphome_version
+    name: "ESPHome Version"
+    icon: mdi:cube-outline
+
+sensor:
+  - platform: wifi_signal
+    id: ${device_name}_wifi_signal
+    name: "WiFi Signal"
+    icon: mdi:wifi
+    update_interval: 5s
+  
+  - platform: uptime
+    id: ${device_name}_uptime
+    mqtt_id: yyyy
+    name: "${friendly_name} Uptime"
+    icon: mdi:clock-outline
+    update_interval: 5s
+
+  - platform: total_daily_energy
+    id: ${device_name}_total_daily_energy
+    name: "Total daily energy"
+    power_id: "${device_name}_power"
+    filters:
+        # Multiplication factor from W to kW is 0.001
+        - multiply: 0.001
+    unit_of_measurement: kWh
+    icon: mdi:clock-alert  
+
+  - platform: adc
+    pin: VCC
+    name: "VCC Voltage"
+    icon: mdi:flash-outline
+
+  # Power sensor
+  - platform: hlw8012
+    voltage_divider: ${voltage_divider}
+    current_resistor: ${current_resistor}
+    sel_pin:
+      number: GPIO12
+      inverted: true
+    cf_pin: GPIO05
+    cf1_pin: GPIO04
+    change_mode_every: 3
+    update_interval: 5s
+    # Current sensor
+    current:
+      id: ${device_name}_current
+      name: "Current"
+      unit_of_measurement: A
+      accuracy_decimals: 3
+      icon: mdi:current-ac   
+      force_update: true
+    # Voltage sensor
+    voltage:
+      id: ${device_name}_voltage
+      name: "Voltage"
+      unit_of_measurement: V
+      accuracy_decimals: 1
+      icon: mdi:flash-outline
+      force_update: true
+    # Power sensor
+    power:
+      id: ${device_name}_power
+      name: "Power"
+      unit_of_measurement: W
+      accuracy_decimals: 0
+      state_class: "measurement"
+      device_class: "energy"
+      filters:
+      - multiply: 0.5
+      icon: mdi:gauge
+      force_update: true
+
+# Enable time component to reset energy at midnight
+time:
+  - platform: sntp
+    id: my_time
+    timezone: Europe/Prague
+
+
+binary_sensor:
+  # Binary sensor for the button press
+  - platform: gpio
+    id: ${device_name}_button
+    name: "Button"
+    pin:
+      number: GPIO13
+      inverted: true
+    on_press:
+      - switch.toggle: ${device_name}_switch
+
+button:
+  - platform: restart
+    id: ${device_name}_restart
+    name: "Restart (Standard mode)"
+  - platform: factory_reset
+    id: ${device_name}_factory_reset
+    name: "Restart (Factory Default)"
+  - platform: safe_mode
+    id: ${device_name}_safe_mode
+    name: "Restart (Safe Mode)"
+
+switch:
+  # Switch to toggle the relay
+  - platform: gpio
+    id: ${device_name}_switch
+    name: "Switch"
+    pin: GPIO15
+    on_turn_on:
+      - light.turn_on: ${device_name}_led
+    on_turn_off:
+      - light.turn_off: ${device_name}_led
+
+output:
+  # Relay state led
+  - platform: esp8266_pwm
+    id: ${device_name}_state_led
+    pin:
+      number: GPIO2
+      inverted: true
+
+light:
+  # Relay state light
+  - platform: monochromatic
+    output: ${device_name}_state_led
+    id: ${device_name}_led
+
+# Uses the red LED as a ESPhome status indicator
+status_led:
+  pin:
+    number: GPIO0
+    inverted: true

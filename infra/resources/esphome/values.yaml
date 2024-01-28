@@ -23,6 +23,8 @@ app-template:
             tag: "2023.12.9"
           env:
             ESPHOME_DASHBOARD_USE_PING: "true"
+            USERNAME: "admin"
+            PASSWORD: "todo-1234"
           resources:
             requests:
               cpu: 10m

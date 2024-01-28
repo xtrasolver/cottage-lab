@@ -3,7 +3,7 @@ substitutions:
   device_name: device_name_01
   voltage_divider: "771"
   current_resistor: "0.0012"
-  static_ip: 192.168.13.140
+
   friendly_name: todo
   
 esphome:

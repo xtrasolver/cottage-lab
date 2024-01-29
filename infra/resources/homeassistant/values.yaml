@@ -162,15 +162,15 @@ app-template:
     #           cpu: 15m
     #           memory: 15Mi
 
-  defaultPodOptions:
-    enableServiceLinks: false
-    terminationGracePeriodSeconds: "1"
+  # defaultPodOptions:
+  #   enableServiceLinks: false
+  #   terminationGracePeriodSeconds: "1"
 
-    securityContext:
-      runAsUser: 568
-      runAsGroup: 568
-      fsGroup: 568
-      fsGroupChangePolicy: "OnRootMismatch"
+  #   securityContext:
+  #     runAsUser: 568
+  #     runAsGroup: 568
+  #     fsGroup: 568
+  #     fsGroupChangePolicy: "OnRootMismatch"
 
   service:
     main:

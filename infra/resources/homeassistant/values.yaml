@@ -269,7 +269,7 @@ app-template:
       advancedMounts:
         main:
           main:
-            - path: /config
+            - path: /config/backups
     configmap:
       enabled: true
       type: configMap
@@ -277,7 +277,7 @@ app-template:
       advancedMounts:
         main:
           main:
-            - path: /config/gitops
+            - path: /config
     # secret:
     #   enabled: true
     #   type: secret

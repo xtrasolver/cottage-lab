@@ -64,7 +64,7 @@ app-template:
     # Configure an Ingress for the main application
     main:
       enabled: true
-      ingressClassName: "external-nginx"
+      ingressClassName: "nginx"
       hosts:
         - host: home-assistant.apps.k8s1.cottage.my-lab.cz
           paths:
@@ -79,7 +79,7 @@ app-template:
     # Configure an Ingress for the code-server sidecar
     code:
       enabled: true
-      ingressClassName: "internal-nginx"
+      ingressClassName: "nginx"
       hosts:
         - host: home-assistant-code.apps.k8s1.cottage.my-lab.cz
           paths:

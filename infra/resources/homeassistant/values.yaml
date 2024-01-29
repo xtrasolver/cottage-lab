@@ -277,7 +277,8 @@ app-template:
       advancedMounts:
         main:
           main:
-            - path: /config
+            - path: /config/configuration.yaml
+              subpath: configuration.yaml
     # secret:
     #   enabled: true
     #   type: secret

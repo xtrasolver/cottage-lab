@@ -1,0 +1,17 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+# automation: !include automations.yaml
+# script: !include scripts.yaml
+# scene: !include scenes.yaml
+
+homeassistant:
+  name: Home
+  unit_system: metric
+  currency: CZK
+  time_zone: "Europe/Prague"
+  country: CZ

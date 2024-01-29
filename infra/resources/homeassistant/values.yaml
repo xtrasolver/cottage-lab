@@ -269,7 +269,7 @@ app-template:
       advancedMounts:
         main:
           main:
-            - path: /config/deps
+            - path: /config
     configmap:
       enabled: true
       type: configMap

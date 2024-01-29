@@ -270,15 +270,15 @@ app-template:
         main:
           main:
             - path: /config
-    configmap:
-      enabled: true
-      type: configMap
-      name: home-assistant-config
-      advancedMounts:
-        main:
-          main:
-            - path: /config/configuration.yaml
-              subpath: configuration.yaml
+    # configmap:
+    #   enabled: true
+    #   type: configMap
+    #   name: home-assistant-config
+    #   advancedMounts:
+    #     main:
+    #       main:
+    #         - path: /config/configuration.yaml
+    #           subpath: configuration.yaml
     # secret:
     #   enabled: true
     #   type: secret

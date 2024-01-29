@@ -263,13 +263,13 @@ app-template:
     #       secretName: hass-valetudopng-tls-certificate
 
   persistence:
-    # config:
-    #   enabled: true
-    #   existingClaim: home-assistant-config
-    #   advancedMounts:
-    #     main:
-    #       main:
-    #         - path: /config
+    config:
+      enabled: true
+      existingClaim: home-assistant-config
+      advancedMounts:
+        main:
+          main:
+            - path: /config
     configmap:
       enabled: true
       type: configMap

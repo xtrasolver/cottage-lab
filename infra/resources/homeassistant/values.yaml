@@ -90,7 +90,7 @@ app-template:
                 port: http
       tls:
         - hosts:
-            - host: home-assistant-code.apps.k8s1.cottage.my-lab.cz
+            - home-assistant-code.apps.k8s1.cottage.my-lab.cz
 
 
   persistence:

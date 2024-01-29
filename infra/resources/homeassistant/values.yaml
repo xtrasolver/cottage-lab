@@ -263,13 +263,13 @@ app-template:
     #       secretName: hass-valetudopng-tls-certificate
 
   persistence:
-    config:
-      enabled: true
-      existingClaim: home-assistant-config-zfs
-      advancedMounts:
-        main:
-          main:
-            - path: /config
+    # config:
+    #   enabled: true
+    #   existingClaim: home-assistant-config-zfs
+    #   advancedMounts:
+    #     main:
+    #       main:
+    #         - path: /config
     configmap:
       enabled: true
       type: configMap
@@ -278,30 +278,30 @@ app-template:
         main:
           main:
             - path: /config/gitops
-    secret:
-      enabled: true
-      type: secret
-      name: hass-secrets
-      advancedMounts:
-        main:
-          main:
-            - path: /config/gitops/secrets
-    configmap-integrations:
-      enabled: true
-      type: configMap
-      name: home-assistant-config-integrations
-      advancedMounts:
-        main:
-          main:
-            - path: /config/gitops/integrations
-    configmap-script:
-      enabled: true
-      type: configMap
-      name: home-assistant-config-script
-      advancedMounts:
-        main:
-          main:
-            - path: /config/gitops/script
+    # secret:
+    #   enabled: true
+    #   type: secret
+    #   name: hass-secrets
+    #   advancedMounts:
+    #     main:
+    #       main:
+    #         - path: /config/gitops/secrets
+    # configmap-integrations:
+    #   enabled: true
+    #   type: configMap
+    #   name: home-assistant-config-integrations
+    #   advancedMounts:
+    #     main:
+    #       main:
+    #         - path: /config/gitops/integrations
+    # configmap-script:
+    #   enabled: true
+    #   type: configMap
+    #   name: home-assistant-config-script
+    #   advancedMounts:
+    #     main:
+    #       main:
+    #         - path: /config/gitops/script
     # appdaemon:
     #   enabled: true
     #   type: configMap

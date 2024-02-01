@@ -12,8 +12,7 @@ esphome:
   platform: ESP8266
   board: esp8285
   esp8266_restore_from_flash: true
-  discovery_unique_id_generator: mac
-  name_add_mac_suffix: true
+  name_add_mac_suffix: false
   project:
     name: esphome.mole-automation
     version: "1.0"
@@ -47,6 +46,7 @@ mqtt:
   port: 1883
   username: !secret mqtt_username
   password: !secret mqtt_password
+  discovery_unique_id_generator: mac
 
 ota:
 

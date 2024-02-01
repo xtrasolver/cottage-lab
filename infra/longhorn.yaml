@@ -10,7 +10,7 @@ spec:
   project: default
   sources:
     - repoURL: "https://github.com/longhorn/charts"
-      targetRevision: pr-v1.6.0-rc3
+      targetRevision: v1.6.x
       path: charts/longhorn
       helm:
         releaseName: longhorn

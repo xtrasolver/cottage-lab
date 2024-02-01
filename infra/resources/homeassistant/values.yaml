@@ -91,7 +91,10 @@ app-template:
       tls:
         - hosts:
             - home-assistant-code.apps.k8s1.cottage.my-lab.cz
-
+      annotations:
+        nginx.ingress.kubernetes.io/auth-type: basic
+        nginx.ingress.kubernetes.io/auth-secret: basic-auth
+        nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
 
   persistence:
     # Configure the main configuration storage location

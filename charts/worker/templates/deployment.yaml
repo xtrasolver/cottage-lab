@@ -39,7 +39,7 @@ spec:
       volumes:
         - name: settings
           secret:
-            name: {{ .Values.appSettingsSecretName }}
+            secretName: {{ .Values.appSettingsSecretName }}
 
       {{- with .Values.nodeSelector }}
       nodeSelector:

@@ -35,7 +35,9 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
           - name: settings
-            mountPath: /app ## specify your path to overwrite the appsettingsfile!
+            mountPath: /app/appsettings.Production.json
+            subPath: appsettings.Production.json
+            readonly: true
       volumes:
         - name: settings
           secret:

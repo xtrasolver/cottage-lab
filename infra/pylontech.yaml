@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra-pylontech
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/xtrasolver/cottage-lab.git
+      targetRevision: HEAD
+      path: charts/worker
+      helm:
+        releaseName: pylontech   
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: pylontech
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
+      - RespectIgnoreDifferences=true

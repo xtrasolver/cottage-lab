@@ -10,7 +10,12 @@ spec:
       targetRevision: HEAD
       path: charts/worker
       helm:
-        releaseName: pylontech   
+        releaseName: pylontech
+        valuesObject:
+          image:
+            repository: xtrasolver/ha-pylontech
+            pullPolicy: IfNotPresent
+            tag: "0.0.2"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: pylontech

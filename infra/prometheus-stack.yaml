@@ -19,7 +19,7 @@ spec:
               storageClassName: longhorn
               accessModes:
                 - ReadWriteOnce
-              size: 150Gi
+              size: 5Gi
             ingress:
               enabled: true
               hosts:
@@ -39,7 +39,7 @@ spec:
                     accessModes: ["ReadWriteOnce"]
                     resources:
                       requests:
-                        storage: 20Gi            
+                        storage: 150Gi            
   destination:
     server: "https://kubernetes.default.svc"
     namespace: prometheus-stack

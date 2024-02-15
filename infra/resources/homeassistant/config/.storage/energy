@@ -1,0 +1,34 @@
+{
+    "version": 1,
+    "minor_version": 1,
+    "key": "energy",
+    "data": {
+      "energy_sources": [],
+      "device_consumption": [
+        {
+          "stat_consumption": "sensor.sp111_07_total_daily_energy"
+        },
+        {
+          "stat_consumption": "sensor.sp111_08_total_daily_energy"
+        },
+        {
+          "stat_consumption": "sensor.sp111_11_total_daily_energy"
+        },
+        {
+          "stat_consumption": "sensor.sp111_12_total_daily_energy"
+        },
+        {
+          "stat_consumption": "sensor.sp111_14_total_daily_energy"
+        },
+        {
+          "stat_consumption": "sensor.sp111_16_total_daily_energy"
+        },
+        {
+          "stat_consumption": "sensor.sp111_17_total_daily_energy"
+        },
+        {
+          "stat_consumption": "sensor.sp111_18_total_daily_energy"
+        }
+      ]
+    }
+  }

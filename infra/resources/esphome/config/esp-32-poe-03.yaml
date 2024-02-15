@@ -1,0 +1,106 @@
+substitutions:
+  name: esp32-poe-03
+  friendly_name: esp32-poe-03
+  frequency: "6"
+
+<<: !include common/esp-32-poe.yaml
+
+# Enable time component to reset energy at midnight
+time:
+  - platform: sntp
+    id: my_time
+    timezone: Europe/Prague
+
+sensor:
+  - platform: homeassistant
+    name: "Power demand"
+    entity_id: sensor.ads1115_channel_a0_gnd
+    id: power_demand
+    on_value:
+      then:
+      - lambda: |-
+          if(isnan(id(power_demand).state))  
+          {
+            id(power).publish_state(0);
+          }
+          else
+          {
+            id(power).publish_state(int(x * 100));
+          }
+
+
+number:
+  - platform: template
+    name: "Surplus power"
+    id: "power"
+    step: 1
+    min_value: 0
+    max_value: 600
+    mode: slider
+    optimistic: true
+    restore_value: true
+    on_value:
+        then:
+          - lambda: |-
+              // Ignore last
+              int value     = (int)x;
+              float level[] = {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f};
+              int index     = value / 100;
+              level[index]  = (value % 100) / 100.0f ;
+
+              ESP_LOGI("on_value", "x     is: %f", x);
+              ESP_LOGI("on_value", "Value is: %d", value);
+              ESP_LOGI("on_value", "Index is: %d", index);
+              ESP_LOGI("on_value", "Level is: %f", level[index]);
+
+              for (int i = 0; i < index; i++) {
+                ESP_LOGI("on_value", "i is: %d", i);
+                level[i] = 1.0f;
+              }
+
+              for (int x = 0; x <= 6; x++) {
+                ESP_LOGI("on_value", "i is: %d : %f", x, level[x]);
+              }
+
+              ESP_LOGI("on_value", "Begin set levels");
+
+              id(ssr_1).set_level(level[0]);
+              id(ssr_2).set_level(level[1]);
+              id(ssr_3).set_level(level[2]);
+              id(ssr_4).set_level(level[3]);
+              id(ssr_5).set_level(level[4]);
+              id(ssr_6).set_level(level[5]);
+
+              ESP_LOGI("on_value", "End in set levels");
+
+output:
+  - platform: ledc
+    pin: GPIO4
+    id: ssr_1
+    frequency: ${frequency}
+    inverted: false
+  - platform: ledc
+    pin: GPIO16
+    id: ssr_2
+    frequency: ${frequency}
+    inverted: false
+  - platform: ledc
+    pin: GPIO15
+    id: ssr_3
+    frequency: ${frequency}
+    inverted: false
+  - platform: ledc
+    pin: GPIO14
+    id: ssr_4
+    frequency: ${frequency}
+    inverted: false
+  - platform: ledc
+    pin: GPIO2
+    id: ssr_5
+    frequency: ${frequency}
+    inverted: false
+  - platform: ledc
+    pin: GPIO5
+    id: ssr_6
+    frequency: ${frequency}
+    inverted: false

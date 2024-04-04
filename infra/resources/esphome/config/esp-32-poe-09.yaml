@@ -1,0 +1,22 @@
+substitutions:
+  name: esp32-poe-09
+  friendly_name: esp32-poe-09
+  frequency: "6"
+
+<<: !include common/esp-32-poe.yaml
+
+# Enable time component to reset energy at midnight
+time:
+  - platform: sntp
+    id: my_time
+    timezone: Europe/Prague
+
+light:
+  - platform: binary
+    name: "Desk Lamp"
+    output: light_output
+
+output:
+  - id: light_output
+    platform: gpio
+    pin: GPIO4

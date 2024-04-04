@@ -11,12 +11,17 @@ time:
     id: my_time
     timezone: Europe/Prague
 
-light:
-  - platform: binary
-    name: "Desk Lamp"
-    output: light_output
-
 output:
   - id: light_output
     platform: gpio
     pin: GPIO4
+
+mqtt:
+  on_json_message:
+    - topic: homeassistant/sensor/pylontech_rack_0/state
+      then:
+        - lambda: |-
+            id(light_output).turn_on();
+        - delay: 10ms
+        - lambda: |-
+            id(light_output).turn_of();          

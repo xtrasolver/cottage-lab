@@ -3,7 +3,7 @@ substitutions:
   friendly_name: esp32-poe-09
   frequency: "6"
 
-<<: !include common/esp-32-poe.yaml
+<<: !include esp-32-poe.yaml
 
 # Enable time component to reset energy at midnight
 time:
@@ -12,16 +12,28 @@ time:
     timezone: Europe/Prague
 
 output:
-  - id: light_output
+  - id: batery_activity
     platform: gpio
     pin: GPIO4
 
+  - id: inverter_activity
+    platform: gpio
+    pin: GPIO16
+
 mqtt:
+  broker: emqx.k8s1.cottage.my-lab.cz
+  port: 1883
+  username: !secret mqtt_username
+  password: !secret mqtt_password
   on_json_message:
     - topic: homeassistant/sensor/pylontech_rack_0/state
       then:
-        - lambda: |-
-            id(light_output).turn_on();
+        - output.turn_on: batery_activity
         - delay: 10ms
-        - lambda: |-
-            id(light_output).turn_of();          
+        - output.turn_off: batery_activity
+    - topic: homeassistant/sensor/inverter_96352107100030/state
+      then:
+        - output.turn_on: inverter_activity
+        - delay: 10ms
+        - output.turn_off: inverter_activity
+       

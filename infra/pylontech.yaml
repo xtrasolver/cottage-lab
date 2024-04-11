@@ -15,7 +15,7 @@ spec:
           image:
             repository: xtrasolver/ha-pylontech
             pullPolicy: IfNotPresent
-            tag: "0.0.12"
+            tag: "0.0.13"
   destination:
     server: "https://kubernetes.default.svc"
     namespace: pylontech

@@ -8,7 +8,7 @@ spec:
   sources:
     - repoURL: https://repos.emqx.io/charts
       chart: emqx-operator
-      targetRevision: 2.2.12
+      targetRevision: 2.2.23
       helm:
         releaseName: emqx-operator
         valuesObject:

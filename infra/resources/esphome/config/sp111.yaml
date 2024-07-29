@@ -27,7 +27,7 @@ wifi:
     ssid: "${device_name} Fallback Hotspot"
     password: !secret wifi_hotspot_password
 
-  domain: esphome-devices.local
+  domain: .esphome-devices.local
 
   # manual_ip:
   #   static_ip: ${static_ip}

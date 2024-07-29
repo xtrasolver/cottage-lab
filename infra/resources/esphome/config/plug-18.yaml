@@ -1,6 +1,6 @@
 # Just change name here
 substitutions:
-  device_name: "plug_18"
+  device_name: "plug-18"
   voltage_divider: "771"
   current_resistor: "0.0012"
   static_ip: 192.168.13.118

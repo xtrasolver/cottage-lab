@@ -1,6 +1,6 @@
 # Just change name here
 substitutions:
-  device_name: device_name_01
+  device_name: todo
   voltage_divider: "771"
   current_resistor: "0.0012"
 
@@ -27,11 +27,13 @@ wifi:
     ssid: "${device_name} Fallback Hotspot"
     password: !secret wifi_hotspot_password
 
-  manual_ip:
-    static_ip: ${static_ip}
-    gateway: 192.168.13.1
-    subnet: 255.255.255.0
-    dns1: 192.168.13.1
+  domain: esphome-devices.local
+
+  # manual_ip:
+  #   static_ip: ${static_ip}
+  #   gateway: 192.168.13.1
+  #   subnet: 255.255.255.0
+  #   dns1: 192.168.13.1
 
 # Enable logging
 logger:
@@ -49,6 +51,7 @@ mqtt:
   discovery_unique_id_generator: mac
 
 ota:
+  platform: esphome
 
 web_server:
   port: 80

@@ -21,6 +21,7 @@ ethernet:
   clk_mode: GPIO17_OUT
   phy_addr: 0
   power_pin: GPIO12
+  domain: .esphome-devices.local
 
 logger:
 
@@ -29,12 +30,14 @@ logger:
 #     key: !secret api_token
 
 mqtt:
-  broker: 192.168.27.154
+  broker: emqx.k8s1.cottage.my-lab.cz
   port: 1883
   username: !secret mqtt_username
   password: !secret mqtt_password
+  discovery_unique_id_generator: mac
 
 ota:
+  platform: esphome
 
 web_server:
   port: 80

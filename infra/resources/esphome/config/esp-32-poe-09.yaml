@@ -1,6 +1,6 @@
 substitutions:
-  name: esp32-poe-09
-  friendly_name: esp32-poe-09
+  name: esp32poe009
+  friendly_name: "ESP32 POE 009"
   frequency: "6"
 
 <<: !include esp-32-poe.yaml

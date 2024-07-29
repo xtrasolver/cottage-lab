@@ -1,0 +1,137 @@
+- id: '1666206069400'
+  alias: SONOFF_SW1_ON
+  description: ''
+  trigger:
+  - type: occupied
+    platform: device
+    device_id: 81d118b1136db21fa3607bdd6a627117
+    entity_id: binary_sensor.signify_netherlands_b_v_sml004_occupancy_4
+    domain: binary_sensor
+  - type: occupied
+    platform: device
+    device_id: 53bebabf2ca994bfc49ef9db940ade22
+    entity_id: binary_sensor.signify_netherlands_b_v_sml004_occupancy_2
+    domain: binary_sensor
+  condition:
+  - condition: or
+    conditions:
+    - type: is_illuminance
+      condition: device
+      device_id: 81d118b1136db21fa3607bdd6a627117
+      entity_id: sensor.signify_netherlands_b_v_sml004_illuminance_4
+      domain: sensor
+      below: 5
+    - type: is_illuminance
+      condition: device
+      device_id: 53bebabf2ca994bfc49ef9db940ade22
+      entity_id: sensor.signify_netherlands_b_v_sml004_illuminance_2
+      domain: sensor
+      below: 5
+  action:
+  - type: turn_on
+    device_id: 32b4936b7793925aa51dba18d90558cc
+    entity_id: light.switch_1_light
+    domain: light
+  mode: single
+- id: '1666206118664'
+  alias: SONOFF_SW1_OFF
+  description: ''
+  trigger:
+  - type: not_occupied
+    platform: device
+    device_id: 81d118b1136db21fa3607bdd6a627117
+    entity_id: binary_sensor.signify_netherlands_b_v_sml004_occupancy_4
+    domain: binary_sensor
+  - type: not_occupied
+    platform: device
+    device_id: 53bebabf2ca994bfc49ef9db940ade22
+    entity_id: binary_sensor.signify_netherlands_b_v_sml004_occupancy_2
+    domain: binary_sensor
+  condition:
+  - condition: and
+    conditions:
+    - type: is_not_occupied
+      condition: device
+      device_id: 81d118b1136db21fa3607bdd6a627117
+      entity_id: binary_sensor.signify_netherlands_b_v_sml004_occupancy_4
+      domain: binary_sensor
+    - type: is_not_occupied
+      condition: device
+      device_id: 53bebabf2ca994bfc49ef9db940ade22
+      entity_id: binary_sensor.signify_netherlands_b_v_sml004_occupancy_2
+      domain: binary_sensor
+  action:
+  - type: turn_off
+    device_id: 32b4936b7793925aa51dba18d90558cc
+    entity_id: light.switch_1_light
+    domain: light
+    enabled: true
+  mode: single
+- id: '1666440826025'
+  alias: SONOFF_SW2_OFF
+  description: ''
+  trigger:
+  - type: not_occupied
+    platform: device
+    device_id: f9c6fbeed69b924fa8fff2c963776458
+    entity_id: binary_sensor.signify_netherlands_b_v_sml004_occupancy_3
+    domain: binary_sensor
+  - type: not_occupied
+    platform: device
+    device_id: d49975a70cf35035650a2097a47eb8a9
+    entity_id: binary_sensor.signify_netherlands_b_v_sml004_occupancy
+    domain: binary_sensor
+  condition:
+  - condition: and
+    conditions:
+    - type: is_not_occupied
+      condition: device
+      device_id: f9c6fbeed69b924fa8fff2c963776458
+      entity_id: binary_sensor.signify_netherlands_b_v_sml004_occupancy_3
+      domain: binary_sensor
+    - type: is_not_occupied
+      condition: device
+      device_id: d49975a70cf35035650a2097a47eb8a9
+      entity_id: binary_sensor.signify_netherlands_b_v_sml004_occupancy
+      domain: binary_sensor
+  action:
+  - type: turn_off
+    device_id: 68f345a29f0d398a2c07b9f1a21a45b1
+    entity_id: light.switch_2_light
+    domain: light
+  mode: single
+- id: '1666441003430'
+  alias: SONOFF_SW2_ON
+  description: ''
+  trigger:
+  - type: occupied
+    platform: device
+    device_id: f9c6fbeed69b924fa8fff2c963776458
+    entity_id: binary_sensor.signify_netherlands_b_v_sml004_occupancy_3
+    domain: binary_sensor
+  - type: occupied
+    platform: device
+    device_id: d49975a70cf35035650a2097a47eb8a9
+    entity_id: binary_sensor.signify_netherlands_b_v_sml004_occupancy
+    domain: binary_sensor
+  condition:
+  - condition: or
+    conditions:
+    - type: is_illuminance
+      condition: device
+      device_id: f9c6fbeed69b924fa8fff2c963776458
+      entity_id: sensor.signify_netherlands_b_v_sml004_illuminance_3
+      domain: sensor
+      below: 20
+    - type: is_illuminance
+      condition: device
+      device_id: d49975a70cf35035650a2097a47eb8a9
+      entity_id: sensor.signify_netherlands_b_v_sml004_illuminance
+      domain: sensor
+      below: 20
+  action:
+  - type: turn_on
+    device_id: 68f345a29f0d398a2c07b9f1a21a45b1
+    entity_id: light.switch_2_light
+    domain: light
+  mode: single

@@ -12,6 +12,8 @@ spec:
       helm:
         releaseName: argocd
         valuesObject:
+          global:
+            domain: argocd.apps.k8s1.cottage.my-lab.cz
           server:
             metrics:
               enabled: true

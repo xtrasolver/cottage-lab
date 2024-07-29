@@ -9,7 +9,7 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: "https://github.com/longhorn/charts"
+    - repoURL: "https://charts.longhorn.io"
       targetRevision: v1.6.2
       path: charts/longhorn
       helm:

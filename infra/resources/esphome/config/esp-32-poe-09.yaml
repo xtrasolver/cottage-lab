@@ -20,6 +20,14 @@ output:
     platform: gpio
     pin: GPIO16
 
+sensor:
+  - platform: template
+    name: "Processing time"
+    device_class: duration
+    unit_of_measurement: ms
+    id: processing_time
+
+
 mqtt:
   broker: emqx.k8s1.cottage.my-lab.cz
   port: 1883
@@ -31,8 +39,45 @@ mqtt:
         - output.turn_on: batery_activity
         - delay: 10ms
         - output.turn_off: batery_activity
+        # - lambda: |
+        #     struct timeval tv;
+        #     gettimeofday(&tv, NULL);
+        #     int received_timestamp = tv.tv_sec;
+
+        #     ESP_LOGD("on_json_message", "received_timestamp          %d", received_timestamp);
+
+        #     if (x.containsKey("begin_read_timestamp")){
+        #       //ESP_LOGD("on_json_message", "begin_read_timestamp        %s", x["begin_read_timestamp");
+
+        #       // int begin_read_timestamp        = (int)x["begin_read_timestamp"];
+              
+        #       // int processing_time = received_timestamp - begin_read_timestamp;
+
+        #       // ESP_LOGD("on_json_message", "begin_read_timestamp        %d", begin_read_timestamp);
+        #       // ESP_LOGD("on_json_message", "processing_time             %d", processing_time);
+
+        #       //id(processing_time).publish_state(pylontech_processing_time);
+        #     }
     - topic: homeassistant/sensor/inverter_96352107100030/state
       then:
+        # - lambda: |
+        #     struct timeval tv;
+        #     gettimeofday(&tv, NULL);
+        #     int received_timestamp = tv.tv_sec;
+
+        #     ESP_LOGD("on_json_message", "received_timestamp          %d", received_timestamp);
+
+        #     if (x.containsKey("begin_read_timestamp")){
+        #       int begin_read_timestamp        = (int)x["begin_read_timestamp"];
+              
+        #       int processing_time = received_timestamp - begin_read_timestamp;
+
+        #       ESP_LOGD("on_json_message", "begin_read_timestamp        %d", begin_read_timestamp);
+        #       ESP_LOGD("on_json_message", "processing_time             %d", processing_time);
+
+        #       //id(processing_time).publish_state(processing_time);
+        #     }
+
         - output.turn_on: inverter_activity
         - delay: 10ms
         - output.turn_off: inverter_activity

@@ -1,9 +1,8 @@
 # Just change name here
 substitutions:
-  device_name: "plug_17"
+  device_name: "plug016"
   voltage_divider: "771"
   current_resistor: "0.0012"
-  static_ip: 192.168.13.117
-  friendly_name: "SP111 - 17"
+  friendly_name: "SP111 - 016"
 
 <<: !include sp111.yaml

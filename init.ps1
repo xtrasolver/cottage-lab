@@ -16,3 +16,11 @@ kubectl apply -f .\infra\clusterissuer.yaml
 
 
 kubectl resource-capacity --sort cpu.limit --util --pods
+
+(New-TimeSpan -Start (Get-Date).Date -End (Get-Date).DateTime).TotalSeconds
+
+Get-Date -UFormat %s
+
+1715965221
+1715965233
+

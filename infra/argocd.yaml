@@ -12,6 +12,14 @@ spec:
       helm:
         releaseName: argocd
         valuesObject:
+          cm:
+            resource.exclusions: |
+              - apiGroups:
+                  - velero.io
+                kinds:
+                  - Backup
+                clusters:
+                  - "*"          
           global:
             domain: argocd.apps.k8s1.cottage.my-lab.cz
           server:

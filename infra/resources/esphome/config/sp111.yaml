@@ -170,6 +170,7 @@ switch:
   # Switch to toggle the relay
   - platform: gpio
     id: ${device_name}_switch
+    restore_mode: RESTORE_DEFAULT_ON
     name: "Switch"
     pin: GPIO15
     on_turn_on:

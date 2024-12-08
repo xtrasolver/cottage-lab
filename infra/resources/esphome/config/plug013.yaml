@@ -3,6 +3,6 @@ substitutions:
   device_name: "plug013"
   voltage_divider: "771"
   current_resistor: "0.0012"
-  friendly_name: "SP111 - 013"
+  friendly_name: "SP111 - 013 - Raspberry 3B"
 
 <<: !include sp111.yaml

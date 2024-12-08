@@ -1,0 +1,8 @@
+# Just change name here
+substitutions:
+  device_name: "plug005"
+  voltage_divider: "771"
+  current_resistor: "0.0012"
+  friendly_name: "SP111 - 005 - vodarna"
+
+<<: !include sp111.yaml

@@ -1,8 +1,8 @@
 # Just change name here
 substitutions:
-  device_name: "plug020"
-  voltage_divider: "771"
+  device_name:      "plug020"
+  voltage_divider:  "771"
   current_resistor: "0.0012"
-  friendly_name: "SP111 - 020"
+  friendly_name:    "SP111 - 020"
 
 <<: !include sp111-new.yaml

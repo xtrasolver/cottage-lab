@@ -5,17 +5,17 @@ app-template:
       #   reloader.stakater.com/auto: "true"
       type: statefulset
       # hack to make devices show as online
-      initContainers:
-        01-init-config:
-          image:
-            repository: debian
-            tag: 12.4-slim
-          command:
-            - /bin/sh
-            - -c
-          args:
-            - >
-              cp /original/config/* /config/
+      # initContainers:
+      #   01-init-config:
+      #     image:
+      #       repository: debian
+      #       tag: 12.4-slim
+      #     command:
+      #       - /bin/sh
+      #       - -c
+      #     args:
+      #       - >
+      #         cp /original/config/* /config/
       containers:
         main:
           image:

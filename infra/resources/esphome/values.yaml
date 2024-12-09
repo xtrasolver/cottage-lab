@@ -76,11 +76,13 @@ app-template:
                 name: esphome-config
             - secret:
                 name: esphome-secrets
-    config:
+    target-config:
+      enabled: true
       type: emptyDir
       globalMounts:
         - path: /config
     cache:
+      enabled: true
       existingClaim: esphome-cache
       globalMounts:
         - path: /cache

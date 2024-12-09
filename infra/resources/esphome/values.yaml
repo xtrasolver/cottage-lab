@@ -86,3 +86,8 @@ app-template:
       existingClaim: esphome-cache
       globalMounts:
         - path: /cache
+    build:
+      enabled: true
+      existingClaim: esphome-build
+      globalMounts:
+        - path: /build

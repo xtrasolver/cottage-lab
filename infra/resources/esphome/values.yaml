@@ -63,7 +63,7 @@ app-template:
   #     kubernetes.io/arch: amd64
 
   persistence:
-    config:
+    original-config:
       enabled: true
       type: custom
       globalMounts:
@@ -76,7 +76,11 @@ app-template:
                 name: esphome-config
             - secret:
                 name: esphome-secrets
-    esphome-cache:
+    config:
       type: emptyDir
       globalMounts:
         - path: /config
+    cache:
+      existingClaim: esphome-cache
+      globalMounts:
+        - path: /cache

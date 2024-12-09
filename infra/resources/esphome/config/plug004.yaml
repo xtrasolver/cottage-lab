@@ -5,4 +5,4 @@ substitutions:
   current_resistor: "0.0012"
   friendly_name: "SP111 - 004"
 
-<<: !include sp111.yaml
+<<: !include sp111-new.yaml

@@ -118,7 +118,7 @@ sensor:
     cf1_pin: GPIO04
     change_mode_every: 4
     current_resistor: ${current_resistor}
-    voltage_dividerider: ${voltage_divider}
+    voltage_divider: ${voltage_divider}
     update_interval: 3s
 
     current:

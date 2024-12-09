@@ -151,6 +151,17 @@ output:
     inverted: true
     id: led_blue
 
+button:
+  - platform: restart
+    id: ${device_name}_restart
+    name: "Restart (Standard mode)"
+  - platform: factory_reset
+    id: ${device_name}_factory_reset
+    name: "Restart (Factory Default)"
+  - platform: safe_mode
+    id: ${device_name}_safe_mode
+    name: "Restart (Safe Mode)"
+
 switch:
   - platform: template
     name: "${device_name} - Switch"

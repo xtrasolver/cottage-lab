@@ -141,15 +141,15 @@ sensor:
 
 status_led:
   pin:
-    number: GPIO02
+    number: GPIO00
     inverted: True
-  id: led_blue
+  id: led_red
 
 output:
   - platform: gpio
-    pin: GPIO00
+    pin: GPIO02
     inverted: true
-    id: led_red
+    id: led_blue
 
 switch:
   - platform: template
@@ -162,10 +162,10 @@ switch:
     id: button_switch
     turn_on_action:
       - switch.turn_on: relay
-      - output.turn_on: led_red
+      - output.turn_on: led_blue
     turn_off_action:
       - switch.turn_off: relay
-      - output.turn_off: led_red
+      - output.turn_off: led_blue
   - platform: gpio
     pin: GPIO15
     id: relay

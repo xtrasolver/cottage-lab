@@ -29,9 +29,9 @@ spec:
               nginx.ingress.kubernetes.io/auth-type: basic
               nginx.ingress.kubernetes.io/auth-secret: basic-auth
               nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
-    - repoURL: https://github.com/xtrasolver/cottage-lab.git
-      targetRevision: HEAD
-      path: infra/resources/longhorn
+    # - repoURL: https://github.com/xtrasolver/cottage-lab.git
+    #   targetRevision: HEAD
+    #   path: infra/resources/longhorn
   destination:
     server: "https://kubernetes.default.svc"
     namespace: longhorn-system

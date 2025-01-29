@@ -85,7 +85,7 @@ spec:
                 fieldRef:
                   apiVersion: v1
                   fieldPath: metadata.namespace
-            image: uipath/sf-k8-utils-rhel:0.9
+            image: uipath/sf-k8-utils-rhel:0.1
             imagePullPolicy: IfNotPresent
             name: uipath-snapshot-cleanup
             resources: {}

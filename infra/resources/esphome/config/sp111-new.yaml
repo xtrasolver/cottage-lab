@@ -138,6 +138,8 @@ sensor:
       unit_of_measurement: W
       id: "power_wattage"
       icon: mdi:gauge
+      filters:
+      - multiply: 0.5
 
 status_led:
   pin:

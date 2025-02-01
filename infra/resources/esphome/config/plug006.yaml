@@ -3,6 +3,6 @@ substitutions:
   device_name: "plug006"
   voltage_divider: "771"
   current_resistor: "0.0012"
-  friendly_name: "SP111 - 006 - Barn Switch"
+  friendly_name: "SP111 - 006"
 
 <<: !include sp111-new.yaml

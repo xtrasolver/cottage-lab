@@ -3,6 +3,6 @@ substitutions:
   device_name: "plug002"
   voltage_divider: "771"
   current_resistor: "0.0012"
-  friendly_name: "SP111 - 002 - Sewage treatment plant"
+  friendly_name: "SP111 - 002"
 
 <<: !include sp111-new.yaml

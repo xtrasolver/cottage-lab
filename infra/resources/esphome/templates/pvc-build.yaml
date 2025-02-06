@@ -3,8 +3,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: esphome-build
   labels:
-    recurring-job-group.longhorn.io/snapshot-delete=enabled
-    recurring-job-group.longhorn.io/snapshot-cleanup=enabled
+    recurring-job-group.longhorn.io/snapshot-delete: enabled
+    recurring-job-group.longhorn.io/snapshot-cleanup: enabled
 spec:
   accessModes:
     - ReadWriteOnce

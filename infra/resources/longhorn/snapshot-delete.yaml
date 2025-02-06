@@ -1,0 +1,21 @@
+apiVersion: longhorn.io/v1beta2
+kind: RecurringJob
+metadata:
+  creationTimestamp: "2025-01-29T13:08:07Z"
+  generation: 1
+  name: snapshot-delete
+  namespace: longhorn-system
+  resourceVersion: "204405989"
+  uid: 74cc40e9-5f7b-4916-8dcc-f60975ddfd9d
+spec:
+  concurrency: 3
+  cron: 10 13 * * *
+  groups: []
+  labels: {}
+  name: snapshot-delete
+  parameters: {}
+  retain: 10
+  task: snapshot-delete
+status:
+  executionCount: 8
+  ownerID: talos-n58-81x

@@ -2,6 +2,9 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: home-assistant-config
+  labels:
+    recurring-job-group.longhorn.io/snapshot-delete=enabled
+    recurring-job-group.longhorn.io/snapshot-cleanup=enabled
 spec:
   accessModes:
     - ReadWriteOnce

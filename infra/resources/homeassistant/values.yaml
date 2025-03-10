@@ -23,7 +23,7 @@ app-template:
             repository: ghcr.io/onedr0p/home-assistant
             # -- image tag
             # this example is not automatically updated, so be sure to use the latest image
-            tag: 2025.3
+            tag: 2025.3.1
 
         # Configure the code-server sidecar
         code:

@@ -54,6 +54,7 @@ app-template:
           port: 8123
     ocpp:
       type: ClusterIP
+      controller: main
       ports:
         http:
           port: 9000

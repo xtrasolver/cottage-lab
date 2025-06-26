@@ -9,8 +9,6 @@ spec:
   selector:
     matchLabels:
       {{- include "worker.selectorLabels" . | nindent 6 }}
-  nodeSelector:
-    kubernetes.io/arch: arm64      
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -27,6 +25,8 @@ spec:
       serviceAccountName: {{ include "worker.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      nodeSelector:
+        kubernetes.io/arch: arm64      
       containers:
         - name: {{ .Chart.Name }}
           securityContext:

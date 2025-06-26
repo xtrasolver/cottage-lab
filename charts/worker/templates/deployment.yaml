@@ -9,6 +9,8 @@ spec:
   selector:
     matchLabels:
       {{- include "worker.selectorLabels" . | nindent 6 }}
+  nodeSelector:
+    kubernetes.io/arch: arm64      
   template:
     metadata:
       {{- with .Values.podAnnotations }}

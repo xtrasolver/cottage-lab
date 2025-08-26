@@ -12,6 +12,3 @@ spec:
   parameters: {}
   retain: 0
   task: snapshot-cleanup
-status:
-  executionCount: 8
-  ownerID: talos-fmv-wqx

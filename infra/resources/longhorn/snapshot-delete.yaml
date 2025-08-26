@@ -12,6 +12,3 @@ spec:
   parameters: {}
   retain: 10
   task: snapshot-delete
-status:
-  executionCount: 8
-  ownerID: talos-n58-81x

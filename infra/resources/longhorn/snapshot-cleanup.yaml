@@ -1,12 +1,8 @@
 apiVersion: longhorn.io/v1beta2
 kind: RecurringJob
 metadata:
-  creationTimestamp: "2025-01-29T12:47:51Z"
-  generation: 3
   name: snapshot-cleanup
   namespace: longhorn-system
-  resourceVersion: "204407329"
-  uid: d01f3a70-676c-470e-9543-4a5fb6ab72d2
 spec:
   concurrency: 3
   cron: 15 13 * * *

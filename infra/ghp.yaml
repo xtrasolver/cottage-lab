@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: infra-ghp
+  namespace: argocd
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/xtrasolver/cottage-lab.git
+      targetRevision: HEAD
+      path: charts/worker
+      helm:
+        releaseName: ghp
+        valuesObject:
+          image:
+            repository: xtrasolver/ghp
+            pullPolicy: IfNotPresent
+            tag: "0.0.1"
+          nodeSelector:
+            kubernetes.io/arch: arm64  
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: ghp
+  syncPolicy:
+    automated: {}
+    syncOptions:
+      - CreateNamespace=true
+      - RespectIgnoreDifferences=true

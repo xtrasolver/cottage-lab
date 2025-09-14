@@ -8,7 +8,7 @@ spec:
   sources:
     - repoURL: https://github.com/xtrasolver/cottage-lab.git
       targetRevision: HEAD
-      path: charts/worker
+      path: charts/ghp
       helm:
         releaseName: ghp
         valuesObject:

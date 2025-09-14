@@ -29,11 +29,11 @@ spec:
         - name: {{ .Chart.Name }}
           env:
             - name: SERIAL_PORT
-              value: /app/serialport
+              value: "/app/serialport"
             - name: CONTROLLER_IP
-              value: 192.168.27.168
+              value: "192.168.27.168"
             - name: CONTROLLER_PORT
-              value: 502
+              value: "502"
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"

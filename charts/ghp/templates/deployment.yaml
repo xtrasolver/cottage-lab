@@ -27,6 +27,13 @@ spec:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}    
       containers:
         - name: {{ .Chart.Name }}
+          env:
+            - name: SERIAL_PORT
+              value: /app/serialport
+            - name: CONTROLLER_IP
+              value: 192.168.27.168
+            - name: CONTROLLER_PORT
+              value: 502
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"

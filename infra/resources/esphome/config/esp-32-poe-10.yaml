@@ -11,5 +11,6 @@ time:
     id: my_time
     timezone: Europe/Prague
 
-
-       
+one_wire:
+  - platform: gpio
+    pin: GPIO4

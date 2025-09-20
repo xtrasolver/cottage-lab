@@ -1,0 +1,15 @@
+substitutions:
+  name: esp32poe010
+  friendly_name: "ESP32 POE 010"
+  frequency: "6"
+
+<<: !include esp-32-poe.yaml
+
+# Enable time component to reset energy at midnight
+time:
+  - platform: sntp
+    id: my_time
+    timezone: Europe/Prague
+
+
+       

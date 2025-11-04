@@ -10,13 +10,13 @@ spec:
   project: default
   sources:
     - repoURL: "https://charts.longhorn.io"
-      targetRevision: v1.10.0
+      targetRevision: v1.7.2
       chart: longhorn
       helm:
         releaseName: longhorn
         valuesObject:
           preUpgradeChecker:
-            jobEnabled: false
+            jobEnabled: false        
           defaultSettings:
             backupTarget: "s3://longhorn-backup@minio/cottage"
             backupTargetCredentialSecret: "minio-secret"        

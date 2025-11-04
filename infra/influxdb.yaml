@@ -10,7 +10,7 @@ spec:
   sources:
     - repoURL: "https://helm.influxdata.com/"
       chart: influxdb2
-      targetRevision: 2.1.2
+      targetRevision: 2.7.4
       helm:
         releaseName: influxdb
         valuesObject:

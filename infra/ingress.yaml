@@ -21,7 +21,9 @@ spec:
             metrics:
               enabled: true
               serviceMonitor:
-                enabled: true 
+                enabled: false
+            admissionWebhooks:
+              enabled: false
   destination:
     server: "https://kubernetes.default.svc"
     namespace: ingress

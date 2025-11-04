@@ -10,6 +10,7 @@ $base64 = kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="
 
 kubectl port-forward service/argocd-server -n argocd 8080:443
 
+kubectl apply -f .\secrets
 
 kubectl apply -f .\infra\auth-acmedns.yaml
 kubectl apply -f .\infra\clusterissuer.yaml

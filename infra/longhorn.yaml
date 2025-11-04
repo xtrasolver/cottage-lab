@@ -16,10 +16,12 @@ spec:
         releaseName: longhorn
         valuesObject:
           preUpgradeChecker:
-            jobEnabled: false        
-          defaultSettings:
+            jobEnabled: false
+          defaultBackupStore:
+            # -- Endpoint used to access the default backupstore. (Options: "NFS", "CIFS", "AWS", "GCP", "AZURE")
             backupTarget: "s3://longhorn-backup@minio/cottage"
-            backupTargetCredentialSecret: "minio-secret"        
+            # -- Name of the Kubernetes secret associated with the default backup target.
+            backupTargetCredentialSecret: "minio-secret"      
           persistence:
             defaultClassReplicaCount: 3
           ingress:

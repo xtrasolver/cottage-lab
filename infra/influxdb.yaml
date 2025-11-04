@@ -37,6 +37,6 @@ spec:
     server: "https://kubernetes.default.svc"
     namespace: influxdb
   syncPolicy:
-    automated: {}
+    # automated: {}
     syncOptions:
       - CreateNamespace=true

@@ -6,6 +6,9 @@ metadata:
 spec:
   project: default
   sources:
+    - repoURL: https://github.com/xtrasolver/cottage-lab.git
+      targetRevision: HEAD
+      path: infra/resources/ingress
     - repoURL: https://kubernetes.github.io/ingress-nginx
       chart: ingress-nginx
       targetRevision: 4.11.1
@@ -26,17 +29,3 @@ spec:
     automated: {}
     syncOptions:
       - CreateNamespace=true
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: tls-wildcard-certificate
-  namespace: certmanager
-spec:
-  commonName: '*.apps.k8s1.cottage.my-lab.cz'
-  dnsNames:
-  - '*.apps.k8s1.cottage.my-lab.cz'
-  issuerRef:
-    kind: ClusterIssuer
-    name: letsencrypt-cert-issuer
-  secretName: tls-wildcard

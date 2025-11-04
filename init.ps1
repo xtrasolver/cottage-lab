@@ -2,7 +2,7 @@ $Env:KUBECONFIG = "D:\Clusters\cottage\talos\kubeconfig"
 
 helm repo add argo https://argoproj.github.io/argo-helm
 kubectl create namespace argocd
-helm upgrade --install --namespace  argocd  argocd argo/argo-cd -f .\infra\values\argocd.yaml
+helm upgrade --install --namespace  argocd  argocd argo/argo-cd -f tmp\argocd.values.yaml
 kubectl apply -f root.yaml
 
 $base64 = kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}"

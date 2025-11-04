@@ -1,19 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: infra-emqx-tenant
+  name: infra-kubelet-serving-cert-approver
   namespace: argocd
 spec:
   project: default
   sources:
     - repoURL: https://github.com/xtrasolver/cottage-lab.git
       targetRevision: HEAD
-      path: infra/resources/emqx-tenant
+      path: infra/resources/kubelet-serving-cert-approver
   destination:
     server: "https://kubernetes.default.svc"
-    namespace: emqx-tenant
+    namespace: kubelet-serving-cert-approver
   syncPolicy:
     # automated: {}
     syncOptions:
       - CreateNamespace=true
-      - RespectIgnoreDifferences=true

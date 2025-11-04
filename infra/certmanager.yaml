@@ -20,7 +20,7 @@ spec:
           prometheus:
             enabled: true
             servicemonitor:
-              enabled: true
+              enabled: false
   destination:
     server: "https://kubernetes.default.svc"
     namespace: certmanager

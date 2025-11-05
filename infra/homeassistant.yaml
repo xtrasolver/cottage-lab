@@ -69,6 +69,7 @@ spec:
 
           ingress:
             enabled: true
+            className: nginx
             hosts:
               - host: home-assistant.apps.k8s1.cottage.my-lab.cz
                 paths:

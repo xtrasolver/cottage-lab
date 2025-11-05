@@ -24,7 +24,7 @@ spec:
                 name: custom-configurations
 
           additionalMounts:
-            - mountPath: /config/custom-configurations
+            - mountPath: /custom-configurations
               name: custom-configurations
 
           persistence:

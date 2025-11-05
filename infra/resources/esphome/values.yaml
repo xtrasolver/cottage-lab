@@ -20,7 +20,7 @@ app-template:
         main:
           image:
             repository: ghcr.io/esphome/esphome
-            tag: "2024.11.3"
+            tag: "2025.10.4"
           env:
             ESPHOME_DASHBOARD_USE_PING: "true"
             USERNAME: "admin"

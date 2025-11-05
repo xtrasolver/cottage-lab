@@ -38,9 +38,23 @@ spec:
             - name: entities-switches
               configMap:
                 name: entities-switches
+
+            - name: integrations-mqtt-binary-sensors
+              configMap:
+                name: integrations-mqtt-binary-sensors
+            - name: integrations-mqtt-numbers
+              configMap:
+                name: integrations-mqtt-numbers
+            - name: integrations-mqtt-selects
+              configMap:
+                name: integrations-mqtt-selects
             - name: integrations-mqtt-sensors
               configMap:
                 name: integrations-mqtt-sensors
+            - name: integrations-mqtt-switches
+              configMap:
+                name: integrations-mqtt-switches
+                
             - name: integrations-influxdb
               configMap:
                 name: integrations-influxdb

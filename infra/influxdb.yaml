@@ -32,6 +32,11 @@ spec:
           env:
             - name: INFLUXDB_DB
               value: main
+          initScripts:
+            enabled: true
+            scripts:
+              init.iql: |+
+                CREATE DATABASE "krtek"
 
   destination:
     server: "https://kubernetes.default.svc"

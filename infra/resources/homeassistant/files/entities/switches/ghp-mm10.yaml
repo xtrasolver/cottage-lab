@@ -1,5 +1,5 @@
 - name: "Main switch"
-  platform: mqtt
+# platform: mqtt
   state_topic: GHP/3/240/2000
   unique_id: "ghp/main_switch"
   command_topic: "GHP/set/240/2001"

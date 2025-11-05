@@ -21,7 +21,7 @@ spec:
           additionalVolumes:
             - name: secrets
               secret:
-                name: secrets
+                secretName: secrets
             - name: entities-binary-sensors
               configMap:
                 name: entities-binary-sensors

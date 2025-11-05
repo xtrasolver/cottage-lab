@@ -23,7 +23,7 @@ app-template:
             repository: ghcr.io/home-operations/home-assistant
             # -- image tag
             # this example is not automatically updated, so be sure to use the latest image
-            tag: 2025.3.4
+            tag: 2025.10.4
 
         # Configure the code-server sidecar
         code:

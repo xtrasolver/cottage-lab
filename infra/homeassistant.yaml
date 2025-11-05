@@ -154,7 +154,7 @@ spec:
     server: "https://kubernetes.default.svc"
     namespace: homeassistant
   syncPolicy:
-    # automated: {}
+    automated: {}
     syncOptions:
       - CreateNamespace=true
       - RespectIgnoreDifferences=true

@@ -21,7 +21,7 @@ spec:
           additionalVolumes:
             - name: custom-configurations
               configMap:
-                custom-configurations
+                name: custom-configurations
 
           additionalMounts:
             - mountPath: /config/ghp.yaml

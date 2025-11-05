@@ -118,7 +118,11 @@ spec:
                 unit_system: metric
                 currency: CZK
                 time_zone: "Europe/Prague"
-                country: CZ                  
+                country: CZ
+                latitude: 49.2562599
+                longitude: 15.1235941
+                elevation: 574
+
 
               # Load frontend themes from the themes folder
               frontend:

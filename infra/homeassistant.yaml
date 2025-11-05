@@ -18,6 +18,16 @@ spec:
         valuesObject:
           replicaCount: 1
 
+          additionalVolumes:
+            - name: custom-configurations
+              configMap:
+                custom-configurations
+
+          additionalMounts:
+            - mountPath: /config/ghp.yaml
+              name: custom-configurations
+              subPath: ghp.yaml
+
           persistence:
             enabled: true
             accessMode: ReadWriteOnce
@@ -37,6 +47,7 @@ spec:
             tls:
               - hosts:
                   - home-assistant.apps.k8s1.cottage.my-lab.cz
+
           addons:
             codeserver:
               enabled: true
@@ -53,6 +64,7 @@ spec:
                 tls:
                   - hosts:
                       - home-assistant-code.apps.k8s1.cottage.my-lab.cz
+
           configuration:
             enabled: true
 
@@ -74,7 +86,9 @@ spec:
 
               automation: !include automations.yaml
               script: !include scripts.yaml
-              scene: !include scenes.yaml      
+              scene: !include scenes.yaml
+              ghp: !include ghp.yaml
+
   destination:
     server: "https://kubernetes.default.svc"
     namespace: homeassistant

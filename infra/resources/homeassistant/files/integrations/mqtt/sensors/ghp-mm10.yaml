@@ -228,7 +228,7 @@
 - name: "DC fan speed-1"
   state_topic: GHP/10/240/316
   value_template: "{{ value_json[8] }}"
-  device_class: volume_flow_rate
+  # device_class: volume_flow_rate
   unit_of_measurement: "%"
   unique_id: "ghp/DC-fan-speed-1"
   device:
@@ -240,7 +240,7 @@
 - name: "DC fan speed-2"
   state_topic: GHP/10/240/316
   value_template: "{{ value_json[9] }}"
-  device_class: volume_flow_rate
+  # device_class: volume_flow_rate
   unit_of_measurement: "%"
   unique_id: "ghp/DC-fan-speed-2"
   device:
@@ -312,7 +312,7 @@
 - name: "DC pump output"
   state_topic: GHP/10/240/316
   value_template: "{{ value_json[15] }}"
-  device_class: volume_flow_rate
+  # device_class: volume_flow_rate
   unit_of_measurement: "%"
   unique_id: "ghp/DC-pump-output"
   device:
@@ -372,7 +372,7 @@
 - name: "Water pump Feedback PWM%"
   state_topic: GHP/10/240/332
   value_template: "{{ value_json[6] }}"
-  device_class: volume_flow_rate
+  # device_class: volume_flow_rate
   unit_of_measurement: "%"
   unique_id: "ghp/Water-pump-Feedback-PWM"
   device:

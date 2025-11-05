@@ -24,9 +24,8 @@ spec:
                 name: custom-configurations
 
           additionalMounts:
-            - mountPath: /config/ghp.yaml
+            - mountPath: /config/custom-configurations
               name: custom-configurations
-              subPath: ghp.yaml
 
           persistence:
             enabled: true

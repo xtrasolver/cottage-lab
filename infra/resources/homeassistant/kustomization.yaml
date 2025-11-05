@@ -6,27 +6,27 @@ generatorOptions:
   immutable: true
 
 configMapGenerator:
-  - name: entities-binary-sensor
+  - name: entities-binary-sensors
     behavior: create
     files:
-      - files/binary_sensor/ghp-mm10.yaml
-  - name: entities-number
+      - files/entities/binary_sensors/ghp-mm10.yaml
+  - name: entities-numbers
     behavior: create
     files:
-      - files/number/ghp-mm10.yaml
-  - name: entities-select
+      - files/entities/numbers/ghp-mm10.yaml
+  - name: entities-selects
     behavior: create
     files:
-      - files/select/ghp-mm10.yaml
-  - name: entities-sensor
+      - files/entities/selects/ghp-mm10.yaml
+  - name: entities-sensors
     behavior: create
     files:
-      - files/sensor/ghp-mm10.yaml
-  - name: entities-switch
+      - files/entities/sensors/ghp-mm10.yaml
+  - name: entities-switchs
     behavior: create
     files:
-      - files/switch/ghp-mm10.yaml
-  - name: entities-mqtt-sensor
+      - files/entities/switches/ghp-mm10.yaml
+  - name: integrations-mqtt-sensors
     behavior: create
     files:
-      - files/mqtt/sensor/ghp-mm10.yaml
+      - files/integrations/mqtt/sensors/ghp-mm10.yaml

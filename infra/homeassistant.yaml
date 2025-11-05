@@ -19,38 +19,43 @@ spec:
           replicaCount: 1
 
           additionalVolumes:
-            - name: entities-binary-sensor
+            - name: secrets
               configMap:
-                name: entities-binary-sensor
-            - name: entities-number
+                name: secrets
+            - name: entities-binary-sensors
               configMap:
-                name: entities-number
-            - name: entities-select
+                name: entities-binary-sensors
+            - name: entities-numbers
               configMap:
-                name: entities-select
-            - name: entities-sensor
+                name: entities-numbers
+            - name: entities-selects
               configMap:
-                name: entities-sensor
-            - name: entities-switch
+                name: entities-selects
+            - name: entities-sensors
               configMap:
-                name: entities-switch
-            - name: entities-mqtt-sensor
+                name: entities-sensors
+            - name: entities-switches
               configMap:
-                name: entities-mqtt-sensor
+                name: entities-switches
+            - name: integrations-mqtt-sensors
+              configMap:
+                name: integrations-mqtt-sensors
 
           additionalMounts:
-            - mountPath: /custom-configurations/binary_sensor
-              name: entities-binary-sensor
-            - mountPath: /custom-configurations/number
-              name: entities-number
-            - mountPath: /custom-configurations/select
-              name: entities-select
-            - mountPath: /custom-configurations/sensor
-              name: entities-sensor
-            - mountPath: /custom-configurations/switch
-              name: entities-switch
-            - mountPath: /custom-configurations/mqtt/sensor
-              name: entities-mqtt-sensor
+            - mountPath: /custom-configurations/secrets
+              name: secrets
+            - mountPath: /custom-configurations/entities/binary_sensors
+              name: entities-binary-sensors
+            - mountPath: /custom-configurations/entities/numbers
+              name: entities-numbers
+            - mountPath: /custom-configurations/entities/selects
+              name: entities-selects
+            - mountPath: /custom-configurations/entities/sensors
+              name: entities-sensors
+            - mountPath: /custom-configurations/entities/switches
+              name: entities-switches
+            - mountPath: /custom-configurations/integrations/mqtt/sensors
+              name: entities-mqtt-sensors
 
           persistence:
             enabled: true
@@ -104,6 +109,13 @@ spec:
                   - 192.168.0.0/16
                   - 127.0.0.0/8
 
+              homeassistant:
+                name: Cottage
+                unit_system: metric
+                currency: CZK
+                time_zone: "Europe/Prague"
+                country: CZ                  
+
               # Load frontend themes from the themes folder
               frontend:
                 themes: !include_dir_merge_named themes
@@ -112,14 +124,23 @@ spec:
               script: !include scripts.yaml
               scene: !include scenes.yaml
 
-              binary_sensor: !include_dir_merge_list /custom-configurations/binary_sensor
-              number: !include_dir_merge_list /custom-configurations/number
-              select: !include_dir_merge_list /custom-configurations/select
-              sensor: !include_dir_merge_list /custom-configurations/sensor
-              switch: !include_dir_merge_list /custom-configurations/switch
+              secrets: !include_dir_merge_list /custom-configurations/secrets
+
+              binary_sensor: !include_dir_merge_list /custom-configurations/entities/binary_sensors
+              number: !include_dir_merge_list /custom-configurations/entities/numbers
+              select: !include_dir_merge_list /custom-configurations/entities/selects
+              sensor: !include_dir_merge_list /custom-configurations/entities/sensors
+              switch: !include_dir_merge_list /custom-configurations/entities/switches
 
               mqtt:
-                sensor: !include_dir_merge_list /custom-configurations/mqtt/sensor
+                broker: !secret mqtt_broker
+                port: !secret mqtt_port
+                username: !secret mqtt_username
+                password: !secret mqtt_password
+
+                sensor: !include_dir_merge_list /custom-configurations/integrations/mqtt/sensors
+
+              influxdb: !include_dir_merge_list /custom-configurations/integrations/influxdb
 
   destination:
     server: "https://kubernetes.default.svc"

@@ -10,7 +10,7 @@ automation: !include automations.yaml
 # scene: !include scenes.yaml
 
 homeassistant:
-  name: Home
+  name: Cottage
   unit_system: metric
   currency: CZK
   time_zone: "Europe/Prague"

@@ -1,11 +1,11 @@
 influxdb:
   api_version: 2
   ssl: false
-  host: !secret influxdb_host
-  port: !secret influxdb_port
-  token: !secret influxdb_token
-  organization: !secret influxdb_organization
-  bucket: !secret influxdb_bucket
+  host: !env_var INFLUXDB_HOST
+  port: !env_var INFLUXDB_PORT
+  token: !env_var INFLUXDB_TOKEN
+  organization: !env_var INFLUXDB_ORGANIZATION
+  bucket: !env_var INFLUXDB_BUCKET
   tags:
     source: HA
   tags_attributes:

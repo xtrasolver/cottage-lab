@@ -1,4 +1,5 @@
 - name: "Heating target"
+  platform: ghp
   state_topic: GHP/3/240/2000
   value_template: "{{ value_json[4] }}"
   device_class: temperature
@@ -13,6 +14,7 @@
     name: GHP-MM10
 
 - name: "DHW target"
+  platform: ghp
   state_topic: GHP/3/240/2000
   value_template: "{{ value_json[5] }}"
   unique_id: "ghp/dhw_target"

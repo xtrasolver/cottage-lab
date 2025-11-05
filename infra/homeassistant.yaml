@@ -138,14 +138,14 @@ spec:
               switch: !include_dir_merge_list /custom-configurations/entities/switches
 
               mqtt:
-                broker: !secret mqtt_broker
-                port: !secret mqtt_port
-                username: !secret mqtt_username
-                password: !secret mqtt_password
+                # broker: !secret mqtt_broker
+                # port: !secret mqtt_port
+                # username: !secret mqtt_username
+                # password: !secret mqtt_password
 
                 sensor: !include_dir_merge_list /custom-configurations/integrations/mqtt/sensors
 
-              influxdb: !include_dir_merge_list /custom-configurations/integrations/influxdb
+              # influxdb: !include_dir_merge_list /custom-configurations/integrations/influxdb
 
   destination:
     server: "https://kubernetes.default.svc"

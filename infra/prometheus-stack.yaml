@@ -8,7 +8,7 @@ spec:
   sources:
     - repoURL: https://prometheus-community.github.io/helm-charts
       chart: kube-prometheus-stack
-      targetRevision: 55.8.3
+      targetRevision: 79.1.1
       helm:
         releaseName: prometheus-stack
         valuesObject:
@@ -19,7 +19,7 @@ spec:
               storageClassName: longhorn
               accessModes:
                 - ReadWriteOnce
-              size: 150Gi
+              size: 10Gi
             ingress:
               enabled: true
               hosts:
@@ -39,7 +39,7 @@ spec:
                     accessModes: ["ReadWriteOnce"]
                     resources:
                       requests:
-                        storage: 150Gi            
+                        storage: 10Gi            
   destination:
     server: "https://kubernetes.default.svc"
     namespace: prometheus-stack

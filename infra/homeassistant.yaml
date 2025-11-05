@@ -19,9 +19,24 @@ spec:
           replicaCount: 1
 
           additionalVolumes:
-            - name: custom-configurations
+            - name: entities-binary-sensor
               configMap:
-                name: custom-configurations
+                name: entities-binary-sensor
+            - name: entities-number
+              configMap:
+                name: entities-number
+            - name: entities-select
+              configMap:
+                name: entities-select
+            - name: entities-sensor
+              configMap:
+                name: entities-sensor
+            - name: entities-switch
+              configMap:
+                name: entities-switch
+            - name: entities-mqtt-sensor
+              configMap:
+                name: entities-mqtt-sensor
 
           additionalMounts:
             - mountPath: /custom-configurations/binary_sensor

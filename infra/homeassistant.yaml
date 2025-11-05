@@ -56,8 +56,18 @@ spec:
               name: entities-sensors
             - mountPath: /custom-configurations/entities/switches
               name: entities-switches
+
+            - mountPath: /custom-configurations/integrations/mqtt/binary_sensors
+              name: integrations-mqtt-binary-sensors
+            - mountPath: /custom-configurations/integrations/mqtt/numbers
+              name: integrations-mqtt-numbers
+            - mountPath: /custom-configurations/integrations/mqtt/selects
+              name: integrations-mqtt-selects
             - mountPath: /custom-configurations/integrations/mqtt/sensors
               name: integrations-mqtt-sensors
+            - mountPath: /custom-configurations/integrations/mqtt/switches
+              name: integrations-mqtt-switches
+              
             - mountPath: /custom-configurations/integrations/influxdb
               name: integrations-influxdb
 
@@ -147,7 +157,11 @@ spec:
                 # username: !env_var MQTT_USERNAME
                 # password: !env_var MQTT_PASSWORD
 
+                binary_sensor: !include_dir_merge_list /custom-configurations/integrations/mqtt/binary_sensors
+                number: !include_dir_merge_list /custom-configurations/integrations/mqtt/numbers
+                select: !include_dir_merge_list /custom-configurations/integrations/mqtt/selects
                 sensor: !include_dir_merge_list /custom-configurations/integrations/mqtt/sensors
+                switch: !include_dir_merge_list /custom-configurations/integrations/mqtt/switches
 
               influxdb: !include /custom-configurations/integrations/influxdb/settings.yaml
 

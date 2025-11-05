@@ -9,27 +9,45 @@ configMapGenerator:
   - name: entities-binary-sensors
     behavior: create
     files:
-      - files/entities/binary_sensors/ghp-mm10.yaml
+      - files/entities/binary_sensors/default.yaml
   - name: entities-numbers
     behavior: create
     files:
-      - files/entities/numbers/ghp-mm10.yaml
+      - files/entities/numbers/default.yaml
   - name: entities-selects
     behavior: create
     files:
-      - files/entities/selects/ghp-mm10.yaml
+      - files/entities/selects/default.yaml
   - name: entities-sensors
     behavior: create
     files:
-      - files/entities/sensors/ghp-mm10.yaml
+      - files/entities/sensors/default.yaml
   - name: entities-switches
     behavior: create
     files:
-      - files/entities/switches/ghp-mm10.yaml
+      - files/entities/switches/default.yaml
+
+  - name: integrations-mqtt-binary-sensors
+    behavior: create
+    files:
+      - files/integrations/mqtt/binary_sensors/ghp-mm10.yaml
+  - name: integrations-mqtt-numbers
+    behavior: create
+    files:
+      - files/integrations/mqtt/numbers/ghp-mm10.yaml
+  - name: integrations-mqtt-selects
+    behavior: create
+    files:
+      - files/integrations/mqtt/selects/ghp-mm10.yaml
   - name: integrations-mqtt-sensors
     behavior: create
     files:
       - files/integrations/mqtt/sensors/ghp-mm10.yaml
+  - name: integrations-mqtt-switches
+    behavior: create
+    files:
+      - files/integrations/mqtt/switches/ghp-mm10.yaml
+      
   - name: integrations-influxdb
     behavior: create
     files:

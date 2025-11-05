@@ -40,6 +40,9 @@ spec:
             - name: integrations-mqtt-sensors
               configMap:
                 name: integrations-mqtt-sensors
+            - name: integrations-influxdb
+              configMap:
+                name: integrations-influxdb
 
           additionalMounts:
             - mountPath: /custom-configurations/secrets
@@ -55,7 +58,9 @@ spec:
             - mountPath: /custom-configurations/entities/switches
               name: entities-switches
             - mountPath: /custom-configurations/integrations/mqtt/sensors
-              name: entities-mqtt-sensors
+              name: integrations-mqtt-sensors
+            - mountPath: /custom-configurations/integrations/influxdb
+              name: integrations-influxdb
 
           persistence:
             enabled: true
@@ -77,22 +82,22 @@ spec:
               - hosts:
                   - home-assistant.apps.k8s1.cottage.my-lab.cz
 
-          addons:
-            codeserver:
-              enabled: true
-              ingress:
-                enabled: true
-                hosts:
-                  - host: home-assistant-code.apps.k8s1.cottage.my-lab.cz
-                    paths:
-                      - path: /
-                        pathType: Prefix
-                        service:
-                          name: main
-                          port: http          
-                tls:
-                  - hosts:
-                      - home-assistant-code.apps.k8s1.cottage.my-lab.cz
+          # addons:
+          #   codeserver:
+          #     enabled: true
+          #     ingress:
+          #       enabled: true
+          #       hosts:
+          #         - host: home-assistant-code.apps.k8s1.cottage.my-lab.cz
+          #           paths:
+          #             - path: /
+          #               pathType: Prefix
+          #               service:
+          #                 name: main
+          #                 port: http          
+          #       tls:
+          #         - hosts:
+          #             - home-assistant-code.apps.k8s1.cottage.my-lab.cz
 
           configuration:
             enabled: true

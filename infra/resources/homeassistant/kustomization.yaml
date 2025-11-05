@@ -30,3 +30,7 @@ configMapGenerator:
     behavior: create
     files:
       - files/integrations/mqtt/sensors/ghp-mm10.yaml
+  - name: integrations-influxdb
+    behavior: create
+    files:
+      - files/integrations/influxdb/settings.yaml

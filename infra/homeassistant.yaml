@@ -24,8 +24,18 @@ spec:
                 name: custom-configurations
 
           additionalMounts:
-            - mountPath: /custom-configurations
-              name: custom-configurations
+            - mountPath: /custom-configurations/binary_sensor
+              name: entities-binary-sensor
+            - mountPath: /custom-configurations/number
+              name: entities-number
+            - mountPath: /custom-configurations/select
+              name: entities-select
+            - mountPath: /custom-configurations/sensor
+              name: entities-sensor
+            - mountPath: /custom-configurations/switch
+              name: entities-switch
+            - mountPath: /custom-configurations/mqtt/sensor
+              name: entities-mqtt-sensor
 
           persistence:
             enabled: true
@@ -86,7 +96,15 @@ spec:
               automation: !include automations.yaml
               script: !include scripts.yaml
               scene: !include scenes.yaml
-              ghp: !include /custom-configurations/ghp.yaml
+
+              binary_sensor: !include_dir_merge_list /custom-configurations/binary_sensor
+              number: !include_dir_merge_list /custom-configurations/number
+              select: !include_dir_merge_list /custom-configurations/select
+              sensor: !include_dir_merge_list /custom-configurations/sensor
+              switch: !include_dir_merge_list /custom-configurations/switch
+
+              mqtt:
+                sensor: !include_dir_merge_list /custom-configurations/mqtt/sensor
 
   destination:
     server: "https://kubernetes.default.svc"

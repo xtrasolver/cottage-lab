@@ -1,0 +1,28 @@
+- name: "Heating target"
+  state_topic: GHP/3/240/2000
+  value_template: "{{ value_json[4] }}"
+  device_class: temperature
+  unit_of_measurement: "°C"
+  unique_id: "ghp/heating_target"
+  command_topic: "GHP/set/240/2004"
+  command_template: "{{ value }}"
+  min: 25
+  max: 35
+  device:
+    identifiers: ghp-mm10
+    name: GHP-MM10
+
+- name: "DHW target"
+  state_topic: GHP/3/240/2000
+  value_template: "{{ value_json[5] }}"
+  unique_id: "ghp/dhw_target"
+  command_topic: "GHP/set/240/2005"
+  command_template: "{{ value }}"
+  device_class: temperature
+  unit_of_measurement: "°C"
+  min: 25
+  max: 55
+  device:
+    identifiers: ghp-mm10
+    name: GHP-MM10
+

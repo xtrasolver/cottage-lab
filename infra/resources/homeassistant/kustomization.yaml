@@ -4,9 +4,29 @@ kind: Kustomization
 generatorOptions:
   disableNameSuffixHash: true
   immutable: true
-  
+
 configMapGenerator:
-  - name: custom-configurations
+  - name: entities-binary-sensor
     behavior: create
     files:
-      - files/ghp.yaml
+      - files/binary_sensor/ghp-mm10.yaml
+  - name: entities-number
+    behavior: create
+    files:
+      - files/number/ghp-mm10.yaml
+  - name: entities-select
+    behavior: create
+    files:
+      - files/select/ghp-mm10.yaml
+  - name: entities-sensor
+    behavior: create
+    files:
+      - files/sensor/ghp-mm10.yaml
+  - name: entities-switch
+    behavior: create
+    files:
+      - files/switch/ghp-mm10.yaml
+  - name: entities-mqtt-sensor
+    behavior: create
+    files:
+      - files/mqtt/sensor/ghp-mm10.yaml

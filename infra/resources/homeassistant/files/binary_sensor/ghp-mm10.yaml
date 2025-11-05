@@ -1,0 +1,168 @@
+- name: "Pump status"
+  state_topic: GHP/10/240/300
+  value_template: "{{ value_json[8] }}"
+  device_class:
+  payload_on: "1"
+  payload_off: "0"
+  unique_id: "ghp/Pump-status"
+  device:
+    identifiers: ghp-mm10
+    manufacturer: Grundig
+    name: GHP-MM10
+    model: MM10
+
+- name: "Four-way valve status"
+  state_topic: GHP/10/240/300
+  value_template: "{{ value_json[9] }}"
+  device_class:
+  payload_on: "1"
+  payload_off: "0"
+  unique_id: "ghp/Four-way-valve-status"
+  device:
+    identifiers: ghp-mm10
+    manufacturer: Grundig
+    name: GHP-MM10
+    model: MM10
+
+- name: "Solenoid three-way valve"
+  state_topic: GHP/10/240/300
+  value_template: "{{ value_json[11] }}"
+  device_class:
+  payload_on: "1"
+  payload_off: "0"
+  unique_id: "ghp/Solenoid-three-way-valve"
+  device:
+    identifiers: ghp-mm10
+    manufacturer: Grundig
+    name: GHP-MM10
+    model: MM10
+
+- name: "Solenoid two-way valve"
+  state_topic: GHP/10/240/300
+  value_template: "{{ value_json[12] }}"
+  device_class:
+  payload_on: "1"
+  payload_off: "0"
+  unique_id: "ghp/Solenoid-two-way-valve"
+  device:
+    identifiers: ghp-mm10
+    manufacturer: Grundig
+    name: GHP-MM10
+    model: MM10
+
+- name: "Pipe electric heating"
+  state_topic: GHP/10/240/300
+  value_template: "{{ value_json[13] }}"
+  device_class:
+  payload_on: "1"
+  payload_off: "0"
+  unique_id: "ghp/Pipe-electric-heating"
+  device:
+    identifiers: ghp-mm10
+    manufacturer: Grundig
+    name: GHP-MM10
+    model: MM10
+
+- name: "Electric water tank heating"
+  state_topic: GHP/10/240/300
+  value_template: "{{ value_json[14] }}"
+  device_class:
+  payload_on: "1"
+  payload_off: "0"
+  unique_id: "ghp/Electric-water-tank-heating"
+  device:
+    identifiers: ghp-mm10
+    manufacturer: Grundig
+    name: GHP-MM10
+    model: MM10
+
+- name: "High pressure 2 state"
+  state_topic: GHP/10/240/316
+  value_template: "{{ value_json[2] }}"
+  device_class:
+  payload_on: "1"
+  payload_off: "0"
+  unique_id: "ghp/High-pressure-2-state"
+  device:
+    identifiers: ghp-mm10
+    manufacturer: Grundig
+    name: GHP-MM10
+    model: MM10
+
+- name: "Chassis heating belt status"
+  state_topic: GHP/10/240/316
+  value_template: "{{ value_json[3] }}"
+  device_class:
+  payload_on: "1"
+  payload_off: "0"
+  unique_id: "ghp/Chassis-heating-belt-status"
+  device:
+    identifiers: ghp-mm10
+    manufacturer: Grundig
+    name: GHP-MM10
+    model: MM10
+
+- name: "Compressor heating belt status"
+  state_topic: GHP/10/240/332
+  value_template: "{{ value_json[1] }}"
+  device_class:
+  payload_on: "1"
+  payload_off: "0"
+  unique_id: "ghp/Compressor-heating-belt-status"
+  device:
+    identifiers: ghp-mm10
+    manufacturer: Grundig
+    name: GHP-MM10
+    model: MM10
+
+- name: "Plate heat exchanger heating belt status"
+  state_topic: GHP/10/240/332
+  value_template: "{{ value_json[2] }}"
+  device_class:
+  payload_on: "1"
+  payload_off: "0"
+  unique_id: "ghp/Plate-heat-exchanger-heating-belt-status"
+  device:
+    identifiers: ghp-mm10
+    manufacturer: Grundig
+    name: GHP-MM10
+    model: MM10
+
+- name: "Defrost"
+  state_topic: GHP/10/240/1000
+  value_template: "{{ value_json[0] | bitwise_and(2) }}"
+  device_class:
+  payload_on: "2"
+  payload_off: "0"
+  unique_id: "ghp/defrost"
+  device:
+    identifiers: ghp-mm10
+    manufacturer: Grundig
+    name: GHP-MM10
+    model: MM10
+
+- name: "Antifreeze"
+  state_topic: GHP/10/240/1000
+  value_template: "{{ value_json[0] | bitwise_and(4) }}"
+  device_class:
+  payload_on: "4"
+  payload_off: "0"
+  unique_id: "ghp/antifreeze"
+  device:
+    identifiers: ghp-mm10
+    manufacturer: Grundig
+    name: GHP-MM10
+    model: MM10
+
+- name: "Night mode"
+  state_topic: GHP/3/240/2000
+  value_template: "{{ value_json[2] | bitwise_and(16) }}"
+  device_class:
+  payload_on: "16"
+  payload_off: "0"
+  unique_id: "ghp/night_mode"
+  device:
+    identifiers: ghp-mm10
+    manufacturer: Grundig
+    name: GHP-MM10
+    model: MM10

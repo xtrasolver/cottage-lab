@@ -33,6 +33,22 @@ spec:
             tls:
               - hosts:
                   - home-assistant.apps.k8s1.cottage.my-lab.cz
+          addons:
+            codeserver:
+              enabled: true
+              ingress:
+                enabled: true
+                hosts:
+                  - host: home-assistant-code.apps.k8s1.cottage.my-lab.cz
+                    paths:
+                      - path: /
+                        pathType: Prefix
+                        service:
+                          name: main
+                          port: http          
+                tls:
+                  - hosts:
+                      - home-assistant-code.apps.k8s1.cottage.my-lab.cz
           configuration:
             enabled: true
 

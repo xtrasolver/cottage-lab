@@ -22,7 +22,7 @@ configMapGenerator:
     behavior: create
     files:
       - files/entities/sensors/ghp-mm10.yaml
-  - name: entities-switchs
+  - name: entities-switches
     behavior: create
     files:
       - files/entities/switches/ghp-mm10.yaml

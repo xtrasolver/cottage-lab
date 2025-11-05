@@ -1,6 +1,6 @@
 influxdb:
   api_version: 2
-  ssl: false
+  ssl: true
   host: !env_var INFLUXDB_HOST
   port: !env_var INFLUXDB_PORT
   token: !env_var INFLUXDB_TOKEN

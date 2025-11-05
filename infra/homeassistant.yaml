@@ -86,7 +86,7 @@ spec:
               automation: !include automations.yaml
               script: !include scripts.yaml
               scene: !include scenes.yaml
-              ghp: !include ghp.yaml
+              ghp: !include /custom-configurations/ghp.yaml
 
   destination:
     server: "https://kubernetes.default.svc"

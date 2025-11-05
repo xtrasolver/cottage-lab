@@ -9,50 +9,52 @@ spec:
     - repoURL: http://pajikos.github.io/home-assistant-helm-chart/
       targetRevision: 0.3.27
       chart: home-assistant
-      valuesObject:
-        replicaCount: 1
+      helm:
+        releaseName: prometheus-stack
+        valuesObject:
+          replicaCount: 1
 
-        persistence:
-          enabled: true
-          accessMode: ReadWriteOnce
-          size: 5Gi
-          storageClass: "longhorn"
+          persistence:
+            enabled: true
+            accessMode: ReadWriteOnce
+            size: 5Gi
+            storageClass: "longhorn"
 
-        ingress:
-          enabled: true
-          hosts:
-            - host: home-assistant.apps.k8s1.cottage.my-lab.cz
-              paths:
-                - path: /
-                  pathType: Prefix
-                  service:
-                    name: main
-                    port: http          
-          tls:
-            - hosts:
-                - home-assistant.apps.k8s1.cottage.my-lab.cz
-        configuration:
-          enabled: true
+          ingress:
+            enabled: true
+            hosts:
+              - host: home-assistant.apps.k8s1.cottage.my-lab.cz
+                paths:
+                  - path: /
+                    pathType: Prefix
+                    service:
+                      name: main
+                      port: http          
+            tls:
+              - hosts:
+                  - home-assistant.apps.k8s1.cottage.my-lab.cz
+          configuration:
+            enabled: true
 
-          templateConfig: |-
-            # Loads default set of integrations. Do not remove.
-            default_config:
+            templateConfig: |-
+              # Loads default set of integrations. Do not remove.
+              default_config:
 
-            http:
-              use_x_forwarded_for: true
-              trusted_proxies:
-                - 10.0.0.0/8
-                - 172.16.0.0/12
-                - 192.168.0.0/16
-                - 127.0.0.0/8
+              http:
+                use_x_forwarded_for: true
+                trusted_proxies:
+                  - 10.0.0.0/8
+                  - 172.16.0.0/12
+                  - 192.168.0.0/16
+                  - 127.0.0.0/8
 
-            # Load frontend themes from the themes folder
-            frontend:
-              themes: !include_dir_merge_named themes
+              # Load frontend themes from the themes folder
+              frontend:
+                themes: !include_dir_merge_named themes
 
-            automation: !include automations.yaml
-            script: !include scripts.yaml
-            scene: !include scenes.yaml      
+              automation: !include automations.yaml
+              script: !include scripts.yaml
+              scene: !include scenes.yaml      
   destination:
     server: "https://kubernetes.default.svc"
     namespace: homeassistant

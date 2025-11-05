@@ -3,7 +3,7 @@ kind: Kustomization
 
 generatorOptions:
   disableNameSuffixHash: true
-  immutable: true
+  immutable: false
 
 configMapGenerator:
   - name: entities-binary-sensors

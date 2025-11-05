@@ -1,11 +1,11 @@
 influxdb:
   api_version: 2
   ssl: true
-  host: influxdb.apps.k8s1.cottage.my-lab.cz
-  port: "443"
-  token: 4QpoFesMdoEaAd7jgpZSOkjfl3uL_JEXABDbdcOqTxbc3Bo7_3B0DioFtL8iSmVNWmoKZAC2zmzCdju1AY6ZzQ==
-  organization: 3697fdf70894ba18
-  bucket: ha
+  INFLUXDB_HOST: influxdb.apps.k8s1.cottage.my-lab.cz
+  INFLUXDB_PORT: "443"
+  INFLUXDB_TOKEN: 4QpoFesMdoEaAd7jgpZSOkjfl3uL_JEXABDbdcOqTxbc3Bo7_3B0DioFtL8iSmVNWmoKZAC2zmzCdju1AY6ZzQ==
+  INFLUXDB_ORGANIZATION: 3697fdf70894ba18
+  INFLUXDB_BUCKET: ha
   tags:
     source: HA
   tags_attributes:

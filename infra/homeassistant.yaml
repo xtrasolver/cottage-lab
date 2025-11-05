@@ -144,7 +144,7 @@ spec:
 
                 sensor: !include_dir_merge_list /custom-configurations/integrations/mqtt/sensors
 
-              influxdb: !include_dir_merge_list /custom-configurations/integrations/influxdb
+              influxdb: !include /custom-configurations/integrations/influxdb/settings.yaml
 
   destination:
     server: "https://kubernetes.default.svc"

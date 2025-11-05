@@ -20,7 +20,7 @@ spec:
 
           envFrom:
             - secretRef:
-              name: secrets
+                name: secrets
 
           additionalVolumes:
             - name: entities-binary-sensors

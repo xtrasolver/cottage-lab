@@ -11,6 +11,26 @@ spec:
       chart: home-assistant
       valuesObject:
         replicaCount: 1
+
+        persistence:
+          enabled: true
+          accessMode: ReadWriteOnce
+          size: 5Gi
+          storageClass: "longhorn"
+
+        ingress:
+          enabled: true
+          hosts:
+            - host: home-assistant.apps.k8s1.cottage.my-lab.cz
+              paths:
+                - path: /
+                  pathType: Prefix
+                  service:
+                    name: main
+                    port: http          
+          tls:
+            - hosts:
+                - home-assistant.apps.k8s1.cottage.my-lab.cz
         configuration:
           enabled: true
 

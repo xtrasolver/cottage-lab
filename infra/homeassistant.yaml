@@ -6,6 +6,10 @@ metadata:
 spec:
   project: default
   sources:
+    - repoURL: https://github.com/xtrasolver/cottage-lab.git
+      targetRevision: HEAD
+      path: infra/resources/homeassistant
+
     - repoURL: http://pajikos.github.io/home-assistant-helm-chart/
       targetRevision: 0.3.27
       chart: home-assistant

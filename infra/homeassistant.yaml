@@ -10,7 +10,7 @@ spec:
       targetRevision: 0.3.27
       chart: home-assistant
       helm:
-        releaseName: prometheus-stack
+        releaseName: home-assistant
         valuesObject:
           replicaCount: 1
 

@@ -114,6 +114,7 @@ spec:
                 existingSecret: "codeserver-secret"
               ingress:
                 enabled: true
+                className: nginx
                 hosts:
                   - host: home-assistant-code.apps.k8s1.cottage.my-lab.cz
                     paths:

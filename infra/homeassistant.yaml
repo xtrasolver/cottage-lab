@@ -11,7 +11,7 @@ spec:
       path: infra/resources/homeassistant
 
     - repoURL: https://pajikos.github.io/home-assistant-helm-chart/
-      targetRevision: 0.3.29
+      targetRevision: 0.3.34
       chart: home-assistant
       helm:
         releaseName: home-assistant
@@ -106,22 +106,25 @@ spec:
               - hosts:
                   - home-assistant.apps.k8s1.cottage.my-lab.cz
 
-          # addons:
-          #   codeserver:
-          #     enabled: true
-          #     ingress:
-          #       enabled: true
-          #       hosts:
-          #         - host: home-assistant-code.apps.k8s1.cottage.my-lab.cz
-          #           paths:
-          #             - path: /
-          #               pathType: Prefix
-          #               service:
-          #                 name: main
-          #                 port: http          
-          #       tls:
-          #         - hosts:
-          #             - home-assistant-code.apps.k8s1.cottage.my-lab.cz
+          addons:
+            codeserver:
+              enabled: true
+              auth:
+                enabled: true
+                existingSecret: "codeserver-secret"
+              ingress:
+                enabled: true
+                hosts:
+                  - host: home-assistant-code.apps.k8s1.cottage.my-lab.cz
+                    paths:
+                      - path: /
+                        pathType: Prefix
+                        service:
+                          name: main
+                          port: http          
+                tls:
+                  - hosts:
+                      - home-assistant-code.apps.k8s1.cottage.my-lab.cz
 
           configuration:
             enabled: true

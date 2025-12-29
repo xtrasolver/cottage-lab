@@ -168,15 +168,7 @@ spec:
               # secrets: !include_dir_merge_list /custom-configurations/secrets
 
               template:
-                - sensor:
-                  - name: "Heat Pump Temp Difference"
-                    unique_id: heat_pump_temp_diff
-                    unit_of_measurement: "°C"
-                    state: "{{ states('sensor.esp32_poe_010_return_temp') | float(0) - states('sensor.esp32_poe_010_outlet_temp') | float(0) }}"
-                  - name: "Heat Pump Power"
-                    unique_id: heat_pump_heat_power
-                    unit_of_measurement: "W"
-                    state: "{{ (states('sensor.ghp_mm10_feedback_flow') | float(0) ) * 1163.0 * (states('sensor.heat_pump_temp_diff') | float(0)) }}"
+                - sensor: !include_dir_merge_list /custom-configurations/entities/sensors
 
               binary_sensor: !include_dir_merge_list /custom-configurations/entities/binary_sensors
               number: !include_dir_merge_list /custom-configurations/entities/numbers

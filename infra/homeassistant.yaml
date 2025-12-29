@@ -16,6 +16,10 @@ spec:
       helm:
         releaseName: home-assistant
         valuesObject:
+          securityContext:
+            runAsUser: 0
+            runAsGroup: 0       
+             
           replicaCount: 1
 
           envFrom:

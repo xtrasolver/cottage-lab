@@ -71,7 +71,7 @@ spec:
               configMap:
                 name: templates-sensors
 
-         additionalMounts:
+          additionalMounts:
             - mountPath: /custom-configurations/entities/binary_sensors
               name: entities-binary-sensors
             - mountPath: /custom-configurations/entities/numbers

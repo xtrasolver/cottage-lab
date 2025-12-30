@@ -167,9 +167,6 @@ spec:
 
               # secrets: !include_dir_merge_list /custom-configurations/secrets
 
-              template:
-                - sensor: !include_dir_merge_list /custom-configurations/entities/sensors
-
               binary_sensor: !include_dir_merge_list /custom-configurations/entities/binary_sensors
               number: !include_dir_merge_list /custom-configurations/entities/numbers
               select: !include_dir_merge_list /custom-configurations/entities/selects
@@ -189,6 +186,12 @@ spec:
                 switch: !include_dir_merge_list /custom-configurations/integrations/mqtt/switches
 
               influxdb: !include /custom-configurations/integrations/influxdb/settings.yaml
+
+              template:
+                - sensor: !include_dir_merge_list /custom-configurations/templates/sensors
+
+              modbus: !include_dir_merge_list /custom-configurations/integrations/modbus
+
 
   destination:
     server: "https://kubernetes.default.svc"

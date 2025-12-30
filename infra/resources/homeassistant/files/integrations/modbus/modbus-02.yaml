@@ -1,0 +1,30 @@
+  - name: "Inverter IN"
+    type: tcp
+    host: 192.168.27.207
+    port: 502
+    delay: 10                        # default = 0
+    timeout: 10                      # default = 5
+    message_wait_milliseconds: 1000  # default = 30 for serial
+    sensors:
+      - name: "Inverter IN - Energy"
+        unique_id: inverter_in_energy
+        data_type: float32
+        precision: 2
+        address: 72
+        input_type: input
+        slave: 1
+        unit_of_measurement: kWh
+        state_class: total_increasing
+        device_class: energy
+
+      - name: "Inverter IN - Power"
+        unit_of_measurement: W
+        unique_id: inverter_in_power
+        slave: 1
+        address: 12
+        input_type: input
+        data_type: float32
+        state_class: measurement
+        device_class: power
+        precision: 1
+ 

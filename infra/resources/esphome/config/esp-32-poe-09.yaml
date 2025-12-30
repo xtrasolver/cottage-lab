@@ -58,7 +58,7 @@ mqtt:
 
         #       //id(processing_time).publish_state(pylontech_processing_time);
         #     }
-    - topic: homeassistant/sensor/inverter_96352107100030/state
+    - topic: homeassistant/sensor/inverter_96352107100030_params1/state
       then:
         # - lambda: |
         #     struct timeval tv;

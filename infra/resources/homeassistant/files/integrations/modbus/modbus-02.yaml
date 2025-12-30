@@ -24,7 +24,7 @@
         address: 12
         input_type: input
         data_type: float32
-        state_class: measurement
+        # state_class: measurement
         device_class: power
         precision: 1
  

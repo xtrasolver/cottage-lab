@@ -1,5 +1,5 @@
   - name: "Inverter IN"
-    type: rtuovertcp
+    type: tcp
     host: 192.168.27.207
     port: 502
     delay: 10                        # default = 0

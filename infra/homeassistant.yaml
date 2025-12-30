@@ -63,7 +63,11 @@ spec:
               configMap:
                 name: integrations-influxdb
 
-          additionalMounts:
+            - name: integrations-modbus
+              configMap:
+                name: integrations-modbus
+
+         additionalMounts:
             - mountPath: /custom-configurations/entities/binary_sensors
               name: entities-binary-sensors
             - mountPath: /custom-configurations/entities/numbers
@@ -88,6 +92,9 @@ spec:
               
             - mountPath: /custom-configurations/integrations/influxdb
               name: integrations-influxdb
+
+            - mountPath: /custom-configurations/integrations/modbus
+              name: integrations-modbus
 
           persistence:
             enabled: true

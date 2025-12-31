@@ -30,6 +30,7 @@ spec:
             - name: ssh
               secret:
                 secretName: ssh
+                defaultMode: 0400
             - name: entities-binary-sensors
               configMap:
                 name: entities-binary-sensors
@@ -73,7 +74,6 @@ spec:
             - name: templates-sensors
               configMap:
                 name: templates-sensors
-                defaultMode: 0400
 
           additionalMounts:
             - mountPath: /custom-configurations/entities/binary_sensors

@@ -73,6 +73,7 @@ spec:
             - name: templates-sensors
               configMap:
                 name: templates-sensors
+                defaultMode: 0400
 
           additionalMounts:
             - mountPath: /custom-configurations/entities/binary_sensors

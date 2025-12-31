@@ -27,6 +27,9 @@ spec:
                 name: secrets
 
           additionalVolumes:
+            - name: ssh
+              secret:
+                secretName: ssh
             - name: entities-binary-sensors
               configMap:
                 name: entities-binary-sensors
@@ -102,6 +105,9 @@ spec:
 
             - mountPath: /custom-configurations/templates/sensors
               name: templates-sensors
+
+            - mountPath: /root/.ssh
+              name: ssh
 
           persistence:
             enabled: true

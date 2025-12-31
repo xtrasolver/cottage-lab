@@ -150,6 +150,9 @@ spec:
                 tls:
                   - hosts:
                       - home-assistant-code.apps.k8s1.cottage.my-lab.cz
+              additionalMounts:
+                - mountPath: /root/.ssh
+                  name: ssh
 
           configuration:
             enabled: true

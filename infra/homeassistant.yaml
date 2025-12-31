@@ -11,7 +11,7 @@ spec:
       path: infra/resources/homeassistant
 
     - repoURL: https://pajikos.github.io/home-assistant-helm-chart/
-      targetRevision: 0.3.34
+      targetRevision: 0.3.37
       chart: home-assistant
       helm:
         releaseName: home-assistant
@@ -31,82 +31,8 @@ spec:
               secret:
                 secretName: ssh
                 defaultMode: 0400
-            - name: entities-binary-sensors
-              configMap:
-                name: entities-binary-sensors
-            - name: entities-numbers
-              configMap:
-                name: entities-numbers
-            - name: entities-selects
-              configMap:
-                name: entities-selects
-            - name: entities-sensors
-              configMap:
-                name: entities-sensors
-            - name: entities-switches
-              configMap:
-                name: entities-switches
-
-            - name: integrations-mqtt-binary-sensors
-              configMap:
-                name: integrations-mqtt-binary-sensors
-            - name: integrations-mqtt-numbers
-              configMap:
-                name: integrations-mqtt-numbers
-            - name: integrations-mqtt-selects
-              configMap:
-                name: integrations-mqtt-selects
-            - name: integrations-mqtt-sensors
-              configMap:
-                name: integrations-mqtt-sensors
-            - name: integrations-mqtt-switches
-              configMap:
-                name: integrations-mqtt-switches
-                
-            - name: integrations-influxdb
-              configMap:
-                name: integrations-influxdb
-
-            - name: integrations-modbus
-              configMap:
-                name: integrations-modbus
-
-            - name: templates-sensors
-              configMap:
-                name: templates-sensors
 
           additionalMounts:
-            - mountPath: /custom-configurations/entities/binary_sensors
-              name: entities-binary-sensors
-            - mountPath: /custom-configurations/entities/numbers
-              name: entities-numbers
-            - mountPath: /custom-configurations/entities/selects
-              name: entities-selects
-            - mountPath: /custom-configurations/entities/sensors
-              name: entities-sensors
-            - mountPath: /custom-configurations/entities/switches
-              name: entities-switches
-
-            - mountPath: /custom-configurations/integrations/mqtt/binary_sensors
-              name: integrations-mqtt-binary-sensors
-            - mountPath: /custom-configurations/integrations/mqtt/numbers
-              name: integrations-mqtt-numbers
-            - mountPath: /custom-configurations/integrations/mqtt/selects
-              name: integrations-mqtt-selects
-            - mountPath: /custom-configurations/integrations/mqtt/sensors
-              name: integrations-mqtt-sensors
-            - mountPath: /custom-configurations/integrations/mqtt/switches
-              name: integrations-mqtt-switches
-              
-            - mountPath: /custom-configurations/integrations/influxdb
-              name: integrations-influxdb
-
-            - mountPath: /custom-configurations/integrations/modbus
-              name: integrations-modbus
-
-            - mountPath: /custom-configurations/templates/sensors
-              name: templates-sensors
-
             - mountPath: /root/.ssh
               name: ssh
 
@@ -156,66 +82,7 @@ spec:
                   name: ssh
 
           configuration:
-            enabled: true
-
-            templateConfig: |-
-              # Loads default set of integrations. Do not remove.
-              default_config:
-
-              http:
-                use_x_forwarded_for: true
-                trusted_proxies:
-                  - 10.0.0.0/8
-                  - 172.16.0.0/12
-                  - 192.168.0.0/16
-                  - 127.0.0.0/8
-
-              homeassistant:
-                name: Cottage
-                unit_system: metric
-                currency: CZK
-                time_zone: "Europe/Prague"
-                country: CZ
-                latitude: 49.2562599
-                longitude: 15.1235941
-                elevation: 574
-
-
-              # Load frontend themes from the themes folder
-              frontend:
-                themes: !include_dir_merge_named themes
-
-              automation: !include automations.yaml
-              script: !include scripts.yaml
-              scene: !include scenes.yaml
-
-              # secrets: !include_dir_merge_list /custom-configurations/secrets
-
-              binary_sensor: !include_dir_merge_list /custom-configurations/entities/binary_sensors
-              number: !include_dir_merge_list /custom-configurations/entities/numbers
-              select: !include_dir_merge_list /custom-configurations/entities/selects
-              sensor: !include_dir_merge_list /custom-configurations/entities/sensors
-              switch: !include_dir_merge_list /custom-configurations/entities/switches
-
-              mqtt:
-                # broker: !env_var MQTT_BROKER
-                # port: !env_var MQTT_PORT
-                # username: !env_var MQTT_USERNAME
-                # password: !env_var MQTT_PASSWORD
-
-                binary_sensor: !include_dir_merge_list /custom-configurations/integrations/mqtt/binary_sensors
-                number: !include_dir_merge_list /custom-configurations/integrations/mqtt/numbers
-                select: !include_dir_merge_list /custom-configurations/integrations/mqtt/selects
-                sensor: !include_dir_merge_list /custom-configurations/integrations/mqtt/sensors
-                switch: !include_dir_merge_list /custom-configurations/integrations/mqtt/switches
-
-              influxdb: !include /custom-configurations/integrations/influxdb/settings.yaml
-
-              template:
-                - sensor: !include_dir_merge_list /custom-configurations/templates/sensors
-
-              modbus: !include_dir_merge_list /custom-configurations/integrations/modbus
-
+            enabled: false
 
   destination:
     server: "https://kubernetes.default.svc"

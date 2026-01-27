@@ -40,7 +40,7 @@ spec:
                 bucket: velero-backup
                 config:
                   region: minio
-                  s3Url: http://192.168.11.11:9000
+                  s3Url: https://nas.home.xtrasolver.cz:30292/
                   s3ForcePathStyle: true
             volumeSnapshotLocation:
               - provider: aws

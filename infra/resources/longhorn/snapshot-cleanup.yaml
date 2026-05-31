@@ -6,7 +6,8 @@ metadata:
 spec:
   concurrency: 3
   cron: 15 13 * * *
-  groups: []
+  groups:
+    - default
   labels: {}
   name: snapshot-cleanup
   parameters: {}

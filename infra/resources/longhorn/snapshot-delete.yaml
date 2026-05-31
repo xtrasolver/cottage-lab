@@ -6,9 +6,10 @@ metadata:
 spec:
   concurrency: 3
   cron: 10 13 * * *
-  groups: []
+  groups:
+    - default
   labels: {}
   name: snapshot-delete
   parameters: {}
-  retain: 10
+  retain: 7
   task: snapshot-delete

@@ -7,7 +7,7 @@
   unique_id: "ghp/heating_target"
   command_topic: "GHP/set/240/2004"
   command_template: "{{ value }}"
-  min: 25
+  min: 7
   max: 55
   device:
     identifiers: ghp-mm10

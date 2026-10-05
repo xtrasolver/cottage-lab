@@ -16,6 +16,9 @@ spec:
       helm:
         releaseName: home-assistant
         valuesObject:
+          image:
+            tag: "2026.10.0b0"
+            
           securityContext:
             runAsUser: 0
             runAsGroup: 0       

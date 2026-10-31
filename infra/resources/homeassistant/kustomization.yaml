@@ -53,11 +53,6 @@ configMapGenerator:
     files:
       - files/integrations/influxdb/settings.yaml
 
-  - name: integrations-modbus
-    behavior: create
-    files:
-      - files/integrations/modbus/modbus-02.yaml
-
   - name: templates-sensors
     behavior: create
     files:
